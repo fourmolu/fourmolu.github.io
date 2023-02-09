@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fourmolu</title>
+        <!-- Code highlighting -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/equilibrium-gray-light.min.css" />
+        <!-- General style -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" integrity="sha512-zb2pp+R+czM7GAemdSUQt6jFmr3qCo6ikvBgVU6F5GvwEDR0C2sefFiPEJ9QUpmAKdD5EqDUdNRtbOYnbF/eyQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous" defer></script>
+        <!-- Custom style -->
+        <link rel="stylesheet" href="../static/style.css" />
+    </head>
+    <body class="markdown-body">
+        <nav class="navbar navbar-expand bg-primary-subtle" aria-label="main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../">Fourmolu</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../config">Configuration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../changelog">Changelog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://hackage.haskell.org/package/fourmolu">Hackage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/fourmolu/fourmolu">Github</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        
+        <main role="main">
+    <h1>Changelog</h1>
+<h2>Fourmolu 0.10.1.0</h2>
+<ul><li><p>Fix bug where using <code>{-</code> in a single-line comment would wrongfully escape it (<a href="https://github.com/fourmolu/fourmolu/issues/265">#265</a>)</p>
+</li>
+<li><p>Fix idempotence bug with indented multiline comments (<a href="https://github.com/fourmolu/fourmolu/issues/273">#273</a>)</p>
+</li>
+</ul>
+<h2>Fourmolu 0.10.0.0</h2>
+<p>New options:</p>
+<ul><li><p>New <code>leading-args</code> option to <code>function-arrows</code> configuration that allows leading arrows only for function arguments (<a href="https://github.com/fourmolu/fourmolu/issues/233">#233</a>)</p>
+</li>
+<li><p>Add <code>haddock-style-module</code> option (<a href="https://github.com/fourmolu/fourmolu/pull/135">#135</a>)</p>
+</li>
+</ul>
+<p>Improvements of existing options:</p>
+<ul><li><p>Add unicode formatting for quasiquotes and arrow brackets (<a href="https://github.com/fourmolu/fourmolu/pull/261">#261</a>)</p>
+</li>
+</ul>
+<p>Bug fixes:</p>
+<ul><li><p>Fix bug with <code>let-style</code> changing single-line let-in blocks in <code>do</code> blocks to multiline.</p>
+</li>
+<li><p>Don't consider the first space after <code>--</code> part of the comment (<a href="https://github.com/fourmolu/fourmolu/pull/255">#255</a>)</p>
+</li>
+</ul>
+<h3>Upstream changes:</h3>
+<h4>Ormolu 0.5.1.0</h4>
+<ul><li><p>Imports are now sorted by package qualifier, if one is present.
+<a href="https://github.com/tweag/ormolu/issues/905">Issue 905</a>.</p>
+</li>
+<li><p>Extension packs like <code>GHC2021</code> and <code>Haskell2010</code> are now bumped to the top of
+the list of language pragmas. <a href="https://github.com/tweag/ormolu/issues/922">Issue
+922</a>.</p>
+</li>
+<li><p>Fix formatting of <code>SCC</code> pragmas in <code>do</code> blocks. <a href="https://github.com/tweag/ormolu/issues/925">Issue
+925</a>.</p>
+</li>
+<li><p>Support type applications in patterns. <a href="https://github.com/tweag/ormolu/issues/930">Issue
+930</a>.</p>
+</li>
+<li><p>Handle <code>UnicodeSyntax</code> variants more consistently. <a href="https://github.com/tweag/ormolu/issues/934">Issue
+934</a>.</p>
+</li>
+<li><p>Fix an inconsistency in formatting of types in GADT declarations in
+certain cases. <a href="https://github.com/tweag/ormolu/pull/932">PR 932</a>.</p>
+</li>
+<li><p>Switched to <code>ghc-lib-parser-9.4</code>, which brings support for the following new
+syntactic features:</p>
+<ul><li><p><code>\cases</code> via <code>LambdaCase</code></p>
+</li>
+<li><p><code>OPAQUE</code> pragmas</p>
+</li>
+<li><p>Unboxed sum type constructors like <code>(# | #)</code>.</p>
+</li>
+</ul>
+</li>
+<li><p>Updated to <code>Cabal-syntax-3.8</code>, supporting <code>cabal-version: 3.8</code>.</p>
+</li>
+</ul>
+<h2>Fourmolu 0.9.0.0</h2>
+<p>New configuration options:</p>
+<ul><li><p>Add <code>let-style</code> and <code>in-style</code> configuration options (<a href="https://github.com/fourmolu/fourmolu/pull/229">#229</a>). The default is set to <code>let-style: auto</code> and <code>in-style: right-align</code>, which should not reformat already formatted files <em>(with some exceptions depending on comment placement)</em>, but allows users to format with <code>newline</code> without additional configuration.</p>
+</li>
+<li><p>Add <code>unicode</code> configuration (<a href="https://github.com/fourmolu/fourmolu/pull/206">#206</a>)</p>
+</li>
+</ul>
+<p>Bug fixes:</p>
+<ul><li><p>Fix some edge cases with function arrows (<a href="https://github.com/fourmolu/fourmolu/pull/247">#247</a>)</p>
+</li>
+<li><p>Fix formatting of module header + export lists when <code>WARNING</code> or <code>DEPRECATED</code> pragma is present (<a href="https://github.com/fourmolu/fourmolu/pull/244">#244</a>)</p>
+</li>
+<li><p>Fixed a bug where an extra space was inserted before promoted types (e.g. <code>foo @'True</code>) (<a href="https://github.com/fourmolu/fourmolu/pull/211">#211</a>)</p>
+</li>
+<li><p>When <code>--respectful</code> is enabled, a <code>where</code> keyword on the line after the export list will not be moved up to the end of the previous line. (<a href="https://github.com/fourmolu/fourmolu/issues/167">#167</a>)</p>
+</li>
+</ul>
+<h2>Fourmolu 0.8.2.0</h2>
+<ul><li><p>Add <code>multi-line-compact</code> option to <code>haddock-style</code> that will output <code>{-|</code> for multiline haddocks instead of <code>{- |</code> (<a href="https://github.com/fourmolu/fourmolu/pull/130">#130</a>)</p>
+</li>
+<li><p>Add <code>function-arrows</code> configuration option to style arrow placement in type signatures (<a href="https://github.com/fourmolu/fourmolu/pull/209">#209</a>)</p>
+</li>
+</ul>
+<h2>Fourmolu 0.8.1.0</h2>
+<ul><li><p>Add <code>emptyConfig</code> (<a href="https://github.com/fourmolu/fourmolu/pull/221">#221</a>)</p>
+</li>
+<li><p>Fixed CLI options not overriding config file options, broken in 0.7.0.0 (<a href="https://github.com/fourmolu/fourmolu/pull/225">#225</a>)</p>
+</li>
+</ul>
+<h2>Fourmolu 0.8.0.0</h2>
+<ul><li><p>Consolidate <code>import-export-comma-style</code> and <code>diff-friendly-import-export</code> into a new option <code>import-export-style</code> (<a href="https://github.com/fourmolu/fourmolu/pull/207">#201</a>)</p>
+</li>
+<li><p>Accept folders as input (<a href="https://github.com/fourmolu/fourmolu/issues/213">#213</a>)</p>
+</li>
+</ul>
+<h3>Upstream changes:</h3>
+<h4>Ormolu 0.5.0.1</h4>
+<ul><li><p>Fixed a bug in the diff printing functionality. <a href="https://github.com/tweag/ormolu/issues/886">Issue
+886</a>.</p>
+</li>
+<li><p>Indent closing bracket for list comprehensions in <code>do</code> blocks.
+<a href="https://github.com/tweag/ormolu/issues/893">Issue 893</a>.</p>
+</li>
+<li><p>Fix <code>hs-source-dirs: .</code> resulting in failing to find a <code>.cabal</code> file for a
+Haskell source file. <a href="https://github.com/tweag/ormolu/issues/909">Issue 909</a>.</p>
+</li>
+<li><p>Comments in closed type family declarations are now indented correctly.
+<a href="https://github.com/tweag/ormolu/issues/913">Issue 913</a>.</p>
+</li>
+<li><p>Cache <code>.cabal</code> file parsing and processing when given multiple input files in
+the same project. This results in dramatic speedups on projects which have
+both huge <code>.cabal</code> files and a large number of individual modules. <a href="https://github.com/tweag/ormolu/issues/897">Issue
+897</a>.</p>
+</li>
+</ul>
+<h2>Fourmolu 0.7.0.1</h2>
+<ul><li><p>Fix bad copy/paste where parsing errors for <code>haddock-style</code> would mention <code>CommaStyle</code></p>
+</li>
+<li><p>Include relevant test files in sdist bundle</p>
+</li>
+</ul>
+<h2>Fourmolu 0.7.0.0</h2>
+<ul><li><p>Add <code>--quiet</code> flag to make the output quieter</p>
+</li>
+<li><p>Removed <code>--cabal-default-extensions</code> flag; the behavior is now enabled by default</p>
+</li>
+<li><p>Add <code>fixities</code> configuration to <code>fourmolu.yaml</code></p>
+<ul><li><p>See the notes in the Ormolu changelog below, except instead of providing fixity information in a <code>.ormolu</code> file, it should be in a <code>fixities</code> config option in <code>fourmolu.yaml</code>, e.g.</p>
+</li>
+</ul>
+<pre><code class="language-yaml">fixities:
+  - 'infixr 8 .='
+  - 'infixr 5 #'
+</code></pre></li>
+<li><p>Fixed issue with <code>import-export-comma-style</code> for multiline import/export elements (<a href="https://github.com/fourmolu/fourmolu/pull/187">#187</a>)</p>
+</li>
+<li><p>Multiline haddock comments with consecutive empty newlines will no longer report an &quot;AST differs&quot; error (<a href="https://github.com/fourmolu/fourmolu/issues/172">#172</a>)</p>
+</li>
+</ul>
+<h3>Upstream changes:</h3>
+<h4>Ormolu 0.5.0.0</h4>
+<ul><li><p>Changed the way operator fixities and precedences are inferred.</p>
+<ul><li><p>Ormolu now tries to locate <code>.cabal</code> files of source files by default and
+in addition to default extensions it also infers the list of
+dependencies.</p>
+</li>
+<li><p>Ormolu comes equipped with extensive knowledge of all packages on
+Hackage and operators that those packages define. Knowing the names of
+the dependencies it can select the right fixity and precedence info from
+its knowledge base.</p>
+</li>
+<li><p>You can ask Ormolu not to look for <code>.cabal</code> files by using the
+<code>--no-cabal</code> switch.</p>
+</li>
+<li><p>Dependencies can be selected manually by using the <code>-p / --package</code>
+option (can be repeated many times).</p>
+</li>
+<li><p>The default heuristic algorithm will still try to guess the right
+fixities and precedence.</p>
+</li>
+<li><p><del>Fixity overrides can be provided by the user in the familiar Haskell
+notation (e.g. <code>infixr 9 .</code>, one declaration per line). They are loaded
+by default from the <code>.ormolu</code> file that is expected to be in the same
+directory as the <code>.cabal</code> file of a given source file. However, if
+<code>--no-cabal</code> is supplied, the <code>.ormolu</code> file will not be looked for either.</del>
+Fixity declarations can be also provided by using the <code>-f / --fixity</code>
+command line option, which see.</p>
+</li>
+<li><p>This resolves the following issues: <a href="https://github.com/tweag/ormolu/issues/826">Issue
+826</a>, <a href="https://github.com/tweag/ormolu/issues/785">Issue
+785</a>, <a href="https://github.com/tweag/ormolu/issues/690">Issue
+690</a>, <a href="https://github.com/tweag/ormolu/issues/825">Issue
+825</a>.</p>
+</li>
+</ul>
+</li>
+<li><p>Invalid haddock comments are formatted in a more consistent way. Leading
+haddock triggers (<code>|</code>, <code>^</code>) in an invalid haddock comment block are now
+escaped with a backslash <code>\</code>. <a href="https://github.com/tweag/ormolu/issues/816">Issue
+816</a>.</p>
+</li>
+<li><p>Type synonyms and families are now formatted correctly when the equals sign
+is preceded by a comment. <a href="https://github.com/tweag/ormolu/issues/829">Issue 829</a>.</p>
+</li>
+<li><p>Bidirectional pattern synonyms are formatted nicer in certain cases.
+<a href="https://github.com/tweag/ormolu/issues/843">Issue 843</a>.</p>
+</li>
+<li><p>Magic comments (like <code>{- ORMOLU_DISABLED -}</code>) now allow arbitrary
+succeeding text. This fixes use cases like <a href="https://github.com/tweag/ormolu/issues/856">Issue
+856</a>.</p>
+</li>
+<li><p>Remove discrepancies between unboxed types and terms. <a href="https://github.com/tweag/ormolu/issues/856">Issue 856
+</a>.</p>
+<ul><li><p>Unboxed sum types are now formatted with a space before each <code>|</code>.</p>
+</li>
+<li><p>Unboxed unit tuples on type and value levels are formatted as <code>(# #)</code>.</p>
+</li>
+</ul>
+</li>
+<li><p>Errors caused by AST differences now print before/after diffs.
+<a href="https://github.com/tweag/ormolu/issues/877">Issue 877</a>.</p>
+</li>
+<li><p>Improved formatting of data declarations in the case of single-constructor
+record with a Haddock. <a href="https://github.com/tweag/ormolu/issues/881">Issue
+881</a>.</p>
+</li>
+</ul>
+<h2>Fourmolu 0.6.0.0</h2>
+<ul><li><p>Fixed regression in 0.5.0.0 with multiline tuples (<a href="https://github.com/fourmolu/fourmolu/pull/162">#162</a>)</p>
+</li>
+<li><p>Fixed regression in 0.5.0.0 with multiline record types (<a href="https://github.com/fourmolu/fourmolu/pull/160">#160</a>)</p>
+</li>
+<li><p>Fixed regression in 0.5.0.0 with indentation after a list comprehension (<a href="https://github.com/fourmolu/fourmolu/pull/149">#149</a>)</p>
+</li>
+<li><p>Add <code>import-export-comma-style</code> configuration to allow leading commas in module import/export lists</p>
+</li>
+</ul>
+<h2>Fourmolu 0.5.0.0</h2>
+<ul><li><p>Fixed issue with leading commas in guards (<a href="https://github.com/fourmolu/fourmolu/pull/123">#123</a>)</p>
+</li>
+<li><p>Use trailing haddocks for record fields when using leading commas (<a href="https://github.com/fourmolu/fourmolu/pull/124">#124</a>)</p>
+</li>
+</ul>
+<h3>Upstream changes:</h3>
+<h4>Ormolu 0.4.0.0</h4>
+<ul><li><p>When a guard is located on its own line, the body associated with this
+guard is indented by one extra level, so that it can easily be
+distinguished from the guard predicate or pattern. <a href="https://github.com/tweag/ormolu/issues/806">Issue
+806</a>.</p>
+</li>
+<li><p>Now a space is forced after <code>--</code> in line comments. <a href="https://github.com/tweag/ormolu/issues/808">Issue
+808</a>.</p>
+</li>
+<li><p>Allow formatting Backpack signature files (<code>.hsig</code>). The switch between
+regular module mode and signature mode is based on the file extension by
+default, but can be overridden with the <code>-t / --source-type</code> command line
+option. <a href="https://github.com/tweag/ormolu/issues/600">Issue 600</a>.</p>
+</li>
+<li><p>Blank Haddock comments are now eliminated. This also fixes issues with
+differing ASTs in some special cases. <a href="https://github.com/tweag/ormolu/issues/726">Issue
+726</a>.</p>
+</li>
+<li><p>Rewrite rules that are never active are now formatted correctly.
+<a href="https://github.com/tweag/ormolu/issues/823">Issue 823</a>.</p>
+</li>
+<li><p>Promoted infix data constructors are now formatted correctly. <a href="https://github.com/tweag/ormolu/issues/768">Issue 768</a>.</p>
+</li>
+<li><p>Switched to <code>ghc-lib-parser-9.2</code>.
+<a href="https://github.com/tweag/ormolu/issues/794">Issue 794</a>.</p>
+<ul><li><p>Support for the new syntax-related language extensions:
+<code>OverloadedRecordDot</code> and <code>OverloadedRecordUpdate</code>
+(disabled by default).
+<a href="https://github.com/tweag/ormolu/issues/709">Issue 709</a>.</p>
+</li>
+<li><p>Removed support for <code>record-dot-preprocessor</code>. For the getter syntax,
+consider using <code>OverloadedRecordDot</code> instead. <a href="https://github.com/tweag/ormolu/issues/659">Issue
+659</a>. <a href="https://github.com/tweag/ormolu/issues/705">Issue
+705</a>.</p>
+</li>
+<li><p>Support for the <code>GHC2021</code> language.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Ormolu 0.3.1.0</h4>
+<ul><li><p>Allow check mode when working with stdin input. <a href="https://github.com/tweag/ormolu/issues/634">Issue 634</a>.</p>
+</li>
+<li><p>Now guards are printed on a new line if at least one guard is multiline or
+if all guards together occupy more than one line. The body of each guard
+is also indented one level deeper in that case. <a href="https://github.com/tweag/ormolu/issues/712">Issue
+712</a>.</p>
+</li>
+<li><p>Invalid Haddock comments are no longer silently deleted, but rather converted
+into regular comments. <a href="https://github.com/tweag/ormolu/issues/474">Issue 474</a>.</p>
+</li>
+</ul>
+<h2>Fourmolu 0.4.0.0</h2>
+<ul><li><p>Write &quot;Loaded config from&quot; message to <code>stderr</code> instead of <code>stdout</code> (<a href="https://github.com/fourmolu/fourmolu/pull/42">#42</a>)</p>
+</li>
+<li><p>Fixed issue with multiline haddocks in indented contexts (<a href="https://github.com/fourmolu/fourmolu/pull/64">#64</a>)</p>
+</li>
+<li><p>Avoid renaming magic comments (<a href="https://github.com/fourmolu/fourmolu/pull/90">#90</a>)</p>
+</li>
+</ul>
+<h3>Upstream changes:</h3>
+<h4>Ormolu 0.3.0.1</h4>
+<ul><li><p>Improvements to <code>.cabal</code> file handling:</p>
+<ul><li><p>When looking for a <code>.cabal</code> file, directories were previously
+erroneously also considered. <a href="https://github.com/tweag/ormolu/issues/781">Issue 781</a>.</p>
+</li>
+<li><p>We now print a note if Ormolu was told to consider
+<code>.cabal</code> files, but no suitable one could be found.</p>
+</li>
+<li><p>Handle an empty <code>hs-source-dirs</code> correctly.</p>
+</li>
+<li><p>Also consider modules which are only conditionally listed
+in the <code>.cabal</code> file.</p>
+</li>
+</ul>
+</li>
+<li><p>The special handling of CPP is now only applied if CPP is
+actually enabled. <a href="https://github.com/tweag/ormolu/issues/782">Issue 782</a>.</p>
+</li>
+<li><p>The left hand side of the <code>:</code> operator now uses braces if
+necessary. <a href="https://github.com/tweag/ormolu/issues/780">Issue 780</a>.</p>
+</li>
+</ul>
+<h4>Ormolu 0.3.0.0</h4>
+<ul><li><p>Data declarations with multiline kind signatures are now formatted
+correctly. <a href="https://github.com/tweag/ormolu/issues/749">Issue 749</a>.</p>
+</li>
+<li><p>Infix arrow command formations are formatted like usual operators.
+This fixes <a href="https://github.com/tweag/ormolu/issues/748">Issue 748</a>.</p>
+</li>
+<li><p><code>do</code> arrow commands are formatted more flexibly. Fixes <a href="https://github.com/tweag/ormolu/issues/753">Issue
+753</a>.</p>
+</li>
+<li><p>Source code is always read and written using UTF8 and ignoring the native
+line ending conventions. <a href="https://github.com/tweag/ormolu/issues/717">Issue
+717</a>.</p>
+</li>
+<li><p>Opt-in support to respect default-extensions and default-language
+from .cabal files. <a href="https://github.com/tweag/ormolu/issues/517">Issue 517</a>.</p>
+</li>
+<li><p>Empty case expressions are now rendered with braces. <a href="https://github.com/tweag/ormolu/issues/765">Issue
+765</a>.</p>
+</li>
+<li><p>Omit braces on repeated application of <code>do</code> blocks. <a href="https://github.com/tweag/ormolu/issues/735">Issue
+735</a>.</p>
+</li>
+<li><p>Improved handling of disabled regions. <a href="https://github.com/tweag/ormolu/pull/773">PR 773</a>.</p>
+<ul><li><p>Disabled regions are now exactly preserved, in particular
+empty lines and trailing spaces. <a href="https://github.com/tweag/ormolu/issues/673">Issue
+673</a>.</p>
+</li>
+<li><p>Strings like <code>-}</code> can now be present in disabled regions.
+<a href="https://github.com/tweag/ormolu/issues/708">Issue 708</a>.</p>
+</li>
+</ul>
+<p>This means that using CPP or magic comments in certain ways which
+were only supported as a side effect previously (like in
+<a href="https://github.com/tweag/ormolu/issues/601">Issue 601</a>)
+will now result in formatting failures. Also see <a href="https://github.com/tweag/ormolu/issues/774">Issue 774</a>.</p>
+</li>
+</ul>
+<h4>Ormolu 0.2.0.0</h4>
+<ul><li><p>Now standalone kind signatures are grouped with type synonyms. <a href="https://github.com/tweag/ormolu/issues/683">Issue
+683</a>.</p>
+</li>
+<li><p><code>TemplateHaskell</code> is not enabled by default anymore. <a href="https://github.com/tweag/ormolu/issues/699">Issue
+699</a>.</p>
+</li>
+<li><p>Made record dot pre-processor rendering idempotent in certain specific
+cases. <a href="https://github.com/tweag/ormolu/issues/701">Issue 701</a>.</p>
+</li>
+<li><p>Added support for arrow command application. <a href="https://github.com/tweag/ormolu/issues/716">Issue
+716</a>.</p>
+</li>
+<li><p>Switched to <code>ghc-lib-parser-9.0.1</code>. <a href="https://github.com/tweag/ormolu/pull/722">PR
+722</a>.</p>
+<ul><li><p>Support for the new language extensions:</p>
+<ul><li><p><code>LexicalNegation</code>, <code>LinearTypes</code>: disabled by default</p>
+</li>
+<li><p><code>QualifiedDo</code>: enabled by default</p>
+</li>
+</ul>
+</li>
+<li><p>Due to <a href="https://gitlab.haskell.org/ghc/ghc/-/wikis/migration/9.0#whitespace-sensitive-and-">upstream changes in whitespace sensitity</a>,
+<code>TypeApplications</code> is now <em>enabled</em> by default. <a href="https://github.com/tweag/ormolu/issues/452">Issue
+452</a>.</p>
+</li>
+<li><p>Haddocks on declarations in files without a <code>module</code> header are no longer
+deleted. <a href="https://github.com/tweag/ormolu/issues/480">Issue 480</a>.</p>
+</li>
+<li><p>Due to a change in Haddock parsing, empty Haddock comments on function
+arguments now get deleted.</p>
+</li>
+</ul>
+</li>
+<li><p>CTYPE pragmas are now preserved. <a href="https://github.com/tweag/ormolu/issues/689">Issue 689</a>.</p>
+</li>
+<li><p><code>TypeApplications</code> in data/type family instances are now supported. <a href="https://github.com/tweag/ormolu/issues/698">Issue
+698</a>.</p>
+</li>
+<li><p>Formatting infix arrow command formations now preserves the AST. <a href="https://github.com/tweag/ormolu/issues/718">Issue
+718</a>.</p>
+</li>
+<li><p>Surround code in brackets with spaces if it contains a <code>StarIsType</code> <code>*</code> to
+prevent unparseable output. <a href="https://github.com/tweag/ormolu/issues/704">Issue 704</a>.</p>
+</li>
+<li><p>Formatting applied multiline constructs in do blocks now preserves the AST.
+<a href="https://github.com/tweag/ormolu/issues/707">Issue 707</a>.</p>
+<p>This will sometimes result in odd indentations, e.g. this snippet is a
+fixed point:</p>
+<pre><code class="language-haskell hljs">foo = <span class="hljs-keyword">do</span>
+  <span class="hljs-keyword">do</span>
+    (+<span class="hljs-number">1</span>)
+   <span class="hljs-number">1</span>
+</code></pre></li>
+<li><p>GHC options passed in via the CLI can now be overridden in local files.
+Previously, if an extension was disabled via the CLI, it could not be
+re-enabled per file.</p>
+</li>
+<li><p><code>NegativeLiterals</code> is no longer enabled by default. Also, spaces after
+negation via <code>-</code> are removed where possible. <a href="https://github.com/tweag/ormolu/issues/694">Issue
+694</a>.</p>
+</li>
+<li><p>Minus signs in literal patterns are now preserved in all cases. <a href="https://github.com/tweag/ormolu/issues/733">Issue
+733</a>.</p>
+</li>
+<li><p>Added support for left-to-right arrow application. <a href="https://github.com/tweag/ormolu/issues/737">Issue
+737</a>.</p>
+</li>
+<li><p>Now <code>--mode check</code> fails on missing trailing blank lines. <a href="https://github.com/tweag/ormolu/issues/743">Issue
+743</a>.</p>
+</li>
+<li><p>Fixed indentation of arrow forms in do blocks. <a href="https://github.com/tweag/ormolu/issues/739">Issue
+739</a>.</p>
+</li>
+</ul>
+<h4>Ormolu 0.1.4.1</h4>
+<ul><li><p>Added command line option <code>--color</code> to control how diffs are printed.
+Standardized the way errors are printed.</p>
+</li>
+</ul>
+<h4>Ormolu 0.1.4.0</h4>
+<ul><li><p>Added support for monad comprehensions. <a href="https://github.com/tweag/ormolu/issues/665">Issue
+665</a>.</p>
+</li>
+<li><p>Fixed a bug when a space was inserted in front of promoted types even when
+it wasn't strictly necessary. <a href="https://github.com/tweag/ormolu/issues/668">Issue
+668</a>.</p>
+</li>
+<li><p>Now the checking mode displays diffs per file when unformatted files are
+found. The rendering of the diffs is also improved. <a href="https://github.com/tweag/ormolu/issues/656">Issue
+656</a>.</p>
+</li>
+</ul>
+<h4>Ormolu 0.1.3.1</h4>
+<ul><li><p>Fixed a problem with multiline record updates using the record dot
+preprocessor. <a href="https://github.com/tweag/ormolu/issues/658">Issue 658</a>.</p>
+</li>
+</ul>
+<h2>Fourmolu 0.3.0.0</h2>
+<ul><li><p>New config option <code>newlines-between-decls</code>, to choose the number of blank lines between top-level declarations.</p>
+</li>
+<li><p>Minor CLI improvements. In particular, the set of valid values for each option is communicated more consistently.</p>
+</li>
+</ul>
+<h2>Fourmolu 0.2.0.0</h2>
+<ul><li><p>More consistent indentation. Previously, with indentation set to n, some constructs such as nested lists and tuples would use an ugly mix of n-space and 2-space indentation.</p>
+</li>
+<li><p>New configuration options (see README or Hackage docs for details):</p>
+<ul><li><p><code>comma-style</code></p>
+</li>
+<li><p><code>record-brace-space</code></p>
+</li>
+<li><p><code>indent-wheres</code></p>
+</li>
+<li><p><code>diff-friendly-import-export</code></p>
+</li>
+<li><p><code>respectful</code></p>
+</li>
+<li><p><code>haddock-style</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Upstream changes:</h3>
+<h4>Ormolu 0.1.3.0:</h4>
+<ul><li><p>Ormolu no longer overwrites already formatted files. <a href="https://github.com/tweag/ormolu/pull/649">PR
+649</a>.</p>
+</li>
+<li><p>Now a space is guaranteed before ticked promoted types. <a href="https://github.com/tweag/ormolu/issues/631">Issue
+631</a>.</p>
+</li>
+<li><p>Made formatting of single-line explicitly bidirectional pattern synonyms
+idempotent. <a href="https://github.com/tweag/ormolu/issues/630">Issue 630</a>.</p>
+</li>
+</ul>
+<h4>Ormolu 0.1.2.0:</h4>
+<ul><li><p>Fixed the bug when comments in different styles got glued together after
+formatting. <a href="https://github.com/tweag/ormolu/issues/589">Issue 589</a>.</p>
+</li>
+<li><p>Added <code>-i</code> as a shortcut for <code>--mode inplace</code>. <a href="https://github.com/tweag/ormolu/issues/467">Issue
+467</a>.</p>
+</li>
+<li><p>Improved grouping of top-level declarations. <a href="https://github.com/tweag/ormolu/issues/466">Issue
+466</a>.</p>
+</li>
+</ul>
+<h2>Fourmolu 0.1.1.0</h2>
+<h3>Upstream changes:</h3>
+<h4>Ormolu 0.1.1.0:</h4>
+<ul><li><p>Imports in a import lists are now normalized: duplicate imports are
+combined/eliminated intelligently.</p>
+</li>
+<li><p>Import declarations that can be merged are now automatically merged.
+<a href="https://github.com/tweag/ormolu/issues/414">Issue 414</a>.</p>
+</li>
+<li><p>The magic comments for disabling and enabling Ormolu now can encompass any
+fragment of code provided that the remaining code after exclusion of the
+disabled part is still syntactically correct. <a href="https://github.com/tweag/ormolu/issues/601">Issue
+601</a>.</p>
+</li>
+<li><p>Improved sorting of operators in imports. <a href="https://github.com/tweag/ormolu/issues/602">Issue
+602</a>.</p>
+</li>
+<li><p>Fixed a bug related to trailing space in multiline comments in certain
+cases. <a href="https://github.com/tweag/ormolu/issues/602">Issue 603</a>.</p>
+</li>
+<li><p>Added support for formatting linked lists with <code>(:)</code> as line terminator.
+<a href="https://github.com/tweag/ormolu/issues/478">Issue 478</a>.</p>
+</li>
+<li><p>Fixed rendering of function arguments in multiline layout. <a href="https://github.com/tweag/ormolu/issues/609">Issue
+609</a>.</p>
+</li>
+<li><p>Blank lines between definitions in <code>let</code> and <code>while</code> bindings are now
+preserved. <a href="https://github.com/tweag/ormolu/issues/554">Issue 554</a>.</p>
+</li>
+<li><p>Fixed the bug when type applications stuck to the <code>$</code> of TH splices that
+followed them. <a href="https://github.com/tweag/ormolu/issues/613">Issue 613</a>.</p>
+</li>
+<li><p>Improved region formatting so that indented fragments—such as definitions
+inside of <code>where</code> clauses—can be formatted. <a href="https://github.com/tweag/ormolu/issues/572">Issue
+572</a>.</p>
+</li>
+<li><p>Fixed the bug related to the de-association of pragma comments. <a href="https://github.com/tweag/ormolu/issues/619">Issue
+619</a>.</p>
+</li>
+</ul>
+<h2>Fourmolu 0.1.0.0</h2>
+<ul><li><p>Allow configuration of indentation size via <code>fourmolu.yaml</code> config files.</p>
+</li>
+<li><p>An operator on a new line is no longer indented when its left operand is a do-block. This prevents the AST from potentially changing when indenting by more than two spaces.</p>
+</li>
+</ul>
+<h3>Upstream changes:</h3>
+<h4>Ormolu 0.1.0.0:</h4>
+<ul><li><p>Fixed rendering of type signatures concerning several identifiers. <a href="https://github.com/tweag/ormolu/issues/566">Issue
+566</a>.</p>
+</li>
+<li><p>Fixed an idempotence issue with inline comments in tuples and parentheses.
+<a href="https://github.com/tweag/ormolu/issues/450">Issue 450</a>.</p>
+</li>
+<li><p>Fixed an idempotence issue when certain comments were picked up as
+“continuation” of a series of comments <a href="https://github.com/tweag/ormolu/issues/449">Issue
+449</a>.</p>
+</li>
+<li><p>Fixed an idempotence issue related to different indentation levels in a
+comment series. <a href="https://github.com/tweag/ormolu/issues/512">Issue 512</a>.</p>
+</li>
+<li><p>Fixed an idempotence issue related to comments which may happen to be
+separated from the elements they are attached to by the equality sign.
+<a href="https://github.com/tweag/ormolu/issues/340">Issue 340</a>.</p>
+</li>
+<li><p>Fixed an idempotence issue with type synonym and data declarations where
+the type has a Haddock. <a href="https://github.com/tweag/ormolu/issues/578">Issue
+578</a>.</p>
+</li>
+<li><p>Fix the false positive about AST differences in presence of comments with
+multiple blank lines in a row. <a href="https://github.com/tweag/ormolu/issues/518">Issue
+518</a>.</p>
+</li>
+<li><p>Fixed rendering of comments around if expressions. <a href="https://github.com/tweag/ormolu/issues/458">Issue
+458</a>.</p>
+</li>
+<li><p>Unnamed fields of data constructors are now documented using the <code>-- ^</code>
+syntax. <a href="https://github.com/tweag/ormolu/issues/445">Issue 445</a> and <a href="https://github.com/tweag/ormolu/issues/428">Issue
+428</a>.</p>
+</li>
+<li><p>Fixed non-idempotent transformation of partly documented data definition.
+<a href="https://github.com/tweag/ormolu/issues/590">Issue 590</a>.</p>
+</li>
+<li><p>Fixed an idempotence issue related to operators. <a href="https://github.com/tweag/ormolu/issues/522">Issue
+522</a>.</p>
+</li>
+<li><p>Renamed the <code>--check-idempotency</code> flag to <code>--check-idempotence</code>.
+Apparently only the latter is correct.</p>
+</li>
+</ul>
+<h2>Fourmolu 0.0.6.0</h2>
+<ul><li><p>The project was fourked to provide four space indent.</p>
+</li>
+</ul>
+<h2>Ormolu 0.0.5.0</h2>
+<ul><li><p>Grouping of statements in <code>do</code>-blocks is now preserved. <a href="https://github.com/tweag/ormolu/issues/74">Issue
+74</a>.</p>
+</li>
+<li><p>Grouping of TH splices is now preserved. <a href="https://github.com/tweag/ormolu/issues/507">Issue
+507</a>.</p>
+</li>
+<li><p>Comments on pragmas are now preserved. <a href="https://github.com/tweag/ormolu/issues/216">Issue
+216</a>.</p>
+</li>
+<li><p>Ormolu can now be enabled and disabled via special comments. <a href="https://github.com/tweag/ormolu/issues/435">Issue
+435</a>.</p>
+</li>
+<li><p>Added experimental support for simple CPP. <a href="https://github.com/tweag/ormolu/issues/415">Issue
+415</a>.</p>
+</li>
+<li><p>Added two new options <code>--start-line</code> and <code>--end-line</code> that allow us to
+select a region to format. <a href="https://github.com/tweag/ormolu/issues/516">Issue
+516</a>.</p>
+</li>
+<li><p>Fixed rendering of module headers in the presence of preceding comments or
+Haddocks. <a href="https://github.com/tweag/ormolu/issues/561">Issue 561</a>.</p>
+</li>
+</ul>
+<h2>Ormolu 0.0.4.0</h2>
+<ul><li><p>When given several files to format, Ormolu does not stop on the first
+failure, but tries to format all the files. <a href="https://github.com/tweag/ormolu/issues/502">Issue
+502</a>.</p>
+</li>
+<li><p>Made rendering of pattern matches involving operators consistent with
+other cases of rendering of operators. <a href="https://github.com/tweag/ormolu/issues/500">Issue
+500</a>.</p>
+</li>
+<li><p>More compact rendering of type family injectivity constraints. <a href="https://github.com/tweag/ormolu/issues/482">Issue
+482</a>.</p>
+</li>
+<li><p>Improved rendering of the keyword <code>where</code> in class, data, and type family
+declarations. When headers of these declarations are multi-line <code>where</code> is
+now put on its own line. <a href="https://github.com/tweag/ormolu/issues/509">Issue
+509</a>.</p>
+</li>
+<li><p>Fixed the bug pertaining to rendering of arrow notation with multiline
+expressions. <a href="https://github.com/tweag/ormolu/issues/513">Issue 513</a>.</p>
+</li>
+<li><p>Made rendering of data type definitions, value-level applications, and
+application of types use the same style. Moreover, existential now doesn't
+cause the data constructor be unconditionally rendered in multiline
+layout. <a href="https://github.com/tweag/ormolu/issues/427">Issue 427</a>.</p>
+</li>
+<li><p>Records with a single data constructor are now formatted more compactly.
+<a href="https://github.com/tweag/ormolu/issues/425">Issue 425</a>.</p>
+</li>
+<li><p>Switched to <code>ghc-lib-parser-8.10.1</code>.</p>
+</li>
+<li><p>Implemented support for the new language extensions <code>ImportQualifiedPost</code>
+and <code>StandaloneKindSignatures</code>.</p>
+</li>
+</ul>
+<h2>Ormolu 0.0.3.1</h2>
+<ul><li><p>Fixed rendering of record updates with the record dot preprocessor syntax
+<a href="https://github.com/tweag/ormolu/issues/498">Issue 498</a>.</p>
+</li>
+</ul>
+<h2>Ormolu 0.0.3.0</h2>
+<ul><li><p>Fixed an issue related to unnecessary use of curly braces. <a href="https://github.com/tweag/ormolu/issues/473">Issue
+473</a>.</p>
+</li>
+<li><p>Fixed the issue with formatting multi-way if when it happens to be a
+function applied to arguments <a href="https://github.com/tweag/ormolu/issues/488">Issue
+488</a>. This changed the way
+multi-line if is formatted in general.</p>
+</li>
+<li><p>Added support for record dot pre-processor when used via the plugin.
+<a href="https://github.com/tweag/ormolu/issues/486">Issue 486</a>.</p>
+</li>
+<li><p>Stopped hanging record constructors and improved placing
+potentially-hanging consturctions in the presence of comments. <a href="https://github.com/tweag/ormolu/issues/447">Issue
+447</a>.</p>
+</li>
+<li><p>Fixed indentation in presence of type applications. <a href="https://github.com/tweag/ormolu/issues/493">Issue
+493</a>.</p>
+</li>
+<li><p>Class and instance declarations now do not have a blank line after
+<code>where</code>. Grouping of methods from the original input is also preserved
+with some normalizations. <a href="https://github.com/tweag/ormolu/issues/431">Issue
+431</a>.</p>
+</li>
+</ul>
+<h2>Ormolu 0.0.2.0</h2>
+<ul><li><p>Switched to <code>ghc-lib-parser</code> instead of depending on the <code>ghc</code> package
+directly. This should allow us to use newest features of GHC while not
+necessarily depending on the newest version of the compiler. In addition
+to that Ormolu is now GHCJS-compatible.</p>
+</li>
+<li><p>Now unrecognized GHC options passed with <code>--ghc-opt</code> cause Ormolu to fail
+(exit code 7).</p>
+</li>
+<li><p>Fixed formatting of result type in closed type families. See <a href="https://github.com/tweag/ormolu/issues/420">issue
+420</a>.</p>
+</li>
+<li><p>Fixed a minor inconsistency between formatting of normal and foreign type
+signatures. See <a href="https://github.com/tweag/ormolu/issues/408">issue 408</a>.</p>
+</li>
+<li><p>Fixed a bug when comment before module header with Haddock was moved
+inside the export list. See <a href="https://github.com/tweag/ormolu/issues/430">issue
+430</a>.</p>
+</li>
+<li><p>Empty <code>forall</code>s are now correctly preserved. See <a href="https://github.com/tweag/ormolu/issues/429">issue
+429</a>.</p>
+</li>
+<li><p>Fixed <a href="https://github.com/tweag/ormolu/issues/446">issue 446</a>, which
+involved braces and operators.</p>
+</li>
+<li><p>When there are comments between preceding Haddock (pipe-style) and its
+corresponding declaration they are preserved like this in the output
+instead of being shifted. To be clear, this is not a very good idea to
+have comments in that position because the Haddock will end up not being
+associated with the declarations. Issues
+<a href="https://github.com/tweag/ormolu/issues/440">440</a> and
+<a href="https://github.com/tweag/ormolu/issues/448">448</a>.</p>
+</li>
+<li><p>Implemented correct handling of shebangs. <a href="https://github.com/tweag/ormolu/issues/377">Issue
+377</a>.</p>
+</li>
+<li><p>Implemented correct handling of stack headers. <a href="https://github.com/tweag/ormolu/issues/393">Issue
+393</a>.</p>
+</li>
+<li><p>Sorting language pragmas cannot not change meaning of the input program
+anymore. <a href="https://github.com/tweag/ormolu/issues/404">Issue 404</a>.</p>
+</li>
+<li><p>Fixed formatting of applications where function is a complex expression.
+<a href="https://github.com/tweag/ormolu/issues/444">Issue 444</a>.</p>
+</li>
+</ul>
+<h2>Ormolu 0.0.1.0</h2>
+<ul><li><p>Initial release.</p>
+</li>
+</ul>
+
+</main>
+
+        
+
+        <footer class="border-top border-secondary-subtle mt-5 p-4">
+            <p>
+                Documentation built from commit
+                <a href="https://github.com/fourmolu/fourmolu/tree/3ae7bfc39ec53783f8f0bbb7fdf8f288db38e1c4"><code>3ae7bfc39ec53783f8f0bbb7fdf8f288db38e1c4</code></a>
+            </p>
+            <p>
+                Site proudly generated by
+                <a href="https://jaspervdj.be/hakyll">Hakyll</a>
+            </p>
+        </footer>
+    </body>
+</html>

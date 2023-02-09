@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fourmolu</title>
+        <!-- Code highlighting -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/equilibrium-gray-light.min.css" />
+        <!-- General style -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" integrity="sha512-zb2pp+R+czM7GAemdSUQt6jFmr3qCo6ikvBgVU6F5GvwEDR0C2sefFiPEJ9QUpmAKdD5EqDUdNRtbOYnbF/eyQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous" defer></script>
+        <!-- Custom style -->
+        <link rel="stylesheet" href="../../static/style.css" />
+    </head>
+    <body class="markdown-body">
+        <nav class="navbar navbar-expand bg-primary-subtle" aria-label="main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../">Fourmolu</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../config">Configuration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../changelog">Changelog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://hackage.haskell.org/package/fourmolu">Hackage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/fourmolu/fourmolu">Github</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        
+        <div class="sidebar-container">
+    <nav class="sidebar nav flex-column" aria-label="sidebar">
+        <h3 class="nav-link disabled">Configuration options</h3>
+        
+          <a class="nav-link" href="../../config/indentation">indentation</a>
+        
+          <a class="nav-link" href="../../config/function-arrows">function-arrows</a>
+        
+          <a class="nav-link" href="../../config/comma-style">comma-style</a>
+        
+          <a class="nav-link" href="../../config/import-export-style">import-export-style</a>
+        
+          <a class="nav-link" href="../../config/indent-wheres">indent-wheres</a>
+        
+          <a class="nav-link" href="../../config/record-brace-space">record-brace-space</a>
+        
+          <a class="nav-link" href="../../config/newlines-between-decls">newlines-between-decls</a>
+        
+          <a class="nav-link" href="../../config/haddock-style">haddock-style</a>
+        
+          <a class="nav-link" href="../../config/haddock-style-module">haddock-style-module</a>
+        
+          <a class="nav-link" href="../../config/let-style">let-style</a>
+        
+          <a class="nav-link" href="../../config/in-style">in-style</a>
+        
+          <a class="nav-link" href="../../config/unicode">unicode</a>
+        
+          <a class="nav-link" href="../../config/respectful">respectful</a>
+        
+          <a class="nav-link" href="../../config/fixities">fixities</a>
+        
+    </nav>
+    <main role="main">
+    <h1><code>respectful</code></h1>
+<table>
+<tbody>
+  <tr>
+    <th>Description</th>
+    <td>Give the programmer more choice on where to insert blank lines</td>
+  </tr>
+  <tr>
+    <th>Type</th>
+    <td><code>Bool</code></td>
+  </tr>
+  <tr>
+    <th>Default</th>
+    <td><code>true</code></td>
+  </tr>
+  <tr>
+    <th>Ormolu</th>
+    <td><code>false</code></td>
+  </tr>
+  <tr>
+    <th>Since</th>
+    <td>v0.2.0.0</td>
+  </tr>
+</tbody>
+</table>
+<p>When enabled, Fourmolu will avoid changing line breaks from how the user inputted them. It's best to just look at the test files to see the difference:</p>
+<ul><li><p><a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/respectful">General tests</a></p>
+</li>
+<li><p><a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/respectful-module-where">Respectful with module where</a></p>
+</li>
+</ul>
+<h2>See also</h2>
+<ul><li><p><a href="../../config/newlines-between-decls"><code>newlines-between-decls</code></a></p>
+</li>
+</ul>
+
+</main>
+
+</div>
+
+        
+
+        <footer class="border-top border-secondary-subtle mt-5 p-4">
+            <p>
+                Documentation built from commit
+                <a href="https://github.com/fourmolu/fourmolu/tree/3ae7bfc39ec53783f8f0bbb7fdf8f288db38e1c4"><code>3ae7bfc39ec53783f8f0bbb7fdf8f288db38e1c4</code></a>
+            </p>
+            <p>
+                Site proudly generated by
+                <a href="https://jaspervdj.be/hakyll">Hakyll</a>
+            </p>
+        </footer>
+    </body>
+</html>

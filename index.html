@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fourmolu</title>
+        <!-- Code highlighting -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/equilibrium-gray-light.min.css" />
+        <!-- General style -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" integrity="sha512-zb2pp+R+czM7GAemdSUQt6jFmr3qCo6ikvBgVU6F5GvwEDR0C2sefFiPEJ9QUpmAKdD5EqDUdNRtbOYnbF/eyQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous" defer></script>
+        <!-- Custom style -->
+        <link rel="stylesheet" href="./static/style.css" />
+    </head>
+    <body class="markdown-body">
+        <nav class="navbar navbar-expand bg-primary-subtle" aria-label="main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./">Fourmolu</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./config">Configuration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./changelog">Changelog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://hackage.haskell.org/package/fourmolu">Hackage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/fourmolu/fourmolu">Github</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        
+        <main role="main">
+    <h1>Fourmolu</h1>
+<blockquote><p>Current release: <strong>v0.10.1.0</strong></p>
+</blockquote>
+<p>Fourmolu is a formatter for Haskell source code. It is a fork of <a href="https://github.com/tweag/ormolu">Ormolu</a>, with the intention to continue to merge upstream improvements. Try it out below!</p>
+<link rel="stylesheet" href="./static/demo.css" />
+<script src="./static/demo.js"></script>
+<div id="demo">
+    <button id="demo-ast-modal-toggle" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demo-ast-modal">
+        Show internal parse result
+    </button>
+    <div id="demo-app">
+        <textarea id="demo-app-input" autocomplete="off" autofocus></textarea>
+        <div id="demo-app-output"></div>
+    </div>
+    <div id="demo-options">
+         <label>  <code>indentation</code><input class="demo-printerOpt" name="indentation" type="number" value="4" /></label>  <label>  <code>function-arrows</code><select class="demo-printerOpt" name="function-arrows"><option selected>trailing</option><option>leading</option><option>leading-args</option></select></label>  <label>  <code>comma-style</code><select class="demo-printerOpt" name="comma-style"><option selected>leading</option><option>trailing</option></select></label>  <label>  <code>import-export-style</code><select class="demo-printerOpt" name="import-export-style"><option>leading</option><option>trailing</option><option selected>diff-friendly</option></select></label>  <label>  <code>indent-wheres</code><input class="demo-printerOpt" name="indent-wheres" type="checkbox" /></label>  <label>  <code>record-brace-space</code><input class="demo-printerOpt" name="record-brace-space" type="checkbox" /></label>  <label>  <code>newlines-between-decls</code><input class="demo-printerOpt" name="newlines-between-decls" type="number" value="1" /></label>  <label>  <code>haddock-style</code><select class="demo-printerOpt" name="haddock-style"><option>single-line</option><option selected>multi-line</option><option>multi-line-compact</option></select></label>  <label>  <code>haddock-style-module</code><select class="demo-printerOpt" name="haddock-style-module"><option selected>null</option><option>single-line</option><option>multi-line</option><option>multi-line-compact</option></select></label>  <label>  <code>let-style</code><select class="demo-printerOpt" name="let-style"><option selected>auto</option><option>inline</option><option>newline</option><option>mixed</option></select></label>  <label>  <code>in-style</code><select class="demo-printerOpt" name="in-style"><option>left-align</option><option selected>right-align</option><option>no-space</option></select></label>  <label>  <code>unicode</code><select class="demo-printerOpt" name="unicode"><option>detect</option><option>always</option><option selected>never</option></select></label>  <label>  <code>respectful</code><input class="demo-printerOpt" name="respectful" type="checkbox" checked /></label> 
+        <label>
+            Check idempotence
+            <input class="demo-config-option" name="checkIdempotence" type="checkbox" checked />
+        </label>
+        <label>
+            Unsafe mode
+            <input class="demo-config-option" name="unsafeMode" type="checkbox" />
+        </label>
+        <label>
+            Format as backpack signature
+            <input class="demo-config-option" name="formatBackpack" type="checkbox" />
+        </label>
+    </div>
+    <div id="demo-ast-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="demo-ast" class="modal-body">
+                    <h2>Input</h2>
+                    <h2>Output</h2>
+                    <pre id="demo-app-input-ast">&nbsp;</pre>
+                    <pre id="demo-app-output-ast">&nbsp;</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+        
+
+        <footer class="border-top border-secondary-subtle mt-5 p-4">
+            <p>
+                Documentation built from commit
+                <a href="https://github.com/fourmolu/fourmolu/tree/3ae7bfc39ec53783f8f0bbb7fdf8f288db38e1c4"><code>3ae7bfc39ec53783f8f0bbb7fdf8f288db38e1c4</code></a>
+            </p>
+            <p>
+                Site proudly generated by
+                <a href="https://jaspervdj.be/hakyll">Hakyll</a>
+            </p>
+        </footer>
+    </body>
+</html>
