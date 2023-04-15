@@ -75,75 +75,86 @@
         
     </nav>
     <main role="main">
-    <h1><code>import-export-style</code></h1>
+    <h1><code>column-limit</code></h1>
 <table>
 <tbody>
   <tr>
     <th>Description</th>
-    <td>Styling of import/export lists</td>
+    <td>Max line length for automatic line breaking</td>
   </tr>
   <tr>
     <th>Options</th>
     <td><ul>
-<li>leading</li>
-<li>trailing</li>
-<li>diff-friendly</li>
+<li><code>none</code></li>
+<li>Any non-negative integer</li>
 </ul>
 </td>
   </tr>
   <tr>
     <th>Default</th>
-    <td><code>diff-friendly</code></td>
+    <td><code>none</code></td>
   </tr>
   <tr>
     <th>Ormolu</th>
-    <td><code>trailing</code></td>
+    <td><code>none</code></td>
   </tr>
   <tr>
     <th>Since</th>
-    <td>v0.8.0.0</td>
+    <td>v0.12.0.0</td>
   </tr>
 </tbody>
 </table>
+<p>If set to a number, fourmolu will try to break up lines longer than that many characters. This may break idempotence.</p>
 <h2>Examples</h2>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-diff-friendly" data-bs-toggle="tab" data-bs-target="#example-output-diff-friendly" role="tab" aria-controls="example-output-diff-friendly">diff-friendly</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-leading" data-bs-toggle="tab" data-bs-target="#example-output-leading" role="tab" aria-controls="example-output-leading">leading</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-trailing" data-bs-toggle="tab" data-bs-target="#example-output-trailing" role="tab" aria-controls="example-output-trailing">trailing</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-diff-friendly" role="tabpanel" aria-labelledby="example-tab-diff-friendly" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">module</span> <span class="hljs-type">MyModule</span> (
-    <span class="hljs-type">User</span> (..),
-    createUser,
-    deleteUser,
-) <span class="hljs-keyword">where</span>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-no-limit" data-bs-toggle="tab" data-bs-target="#example-output-no-limit" role="tab" aria-controls="example-output-no-limit">No limit</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-40-characters" data-bs-toggle="tab" data-bs-target="#example-output-40-characters" role="tab" aria-controls="example-output-40-characters">40 characters</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-80-characters" data-bs-toggle="tab" data-bs-target="#example-output-80-characters" role="tab" aria-controls="example-output-80-characters">80 characters</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-no-limit" role="tabpanel" aria-labelledby="example-tab-no-limit" tabindex="0"><pre><code class="language-haskell hljs">rootUsers :: [<span class="hljs-type">String</span>]
+rootUsers = [<span class="hljs-string">"root"</span>]
 
-<span class="hljs-keyword">import</span> <span class="hljs-type">MyModule.Internal</span> (
-    <span class="hljs-type">User</span>,
-    createUser,
-    deleteUser,
- )
-</code></pre></div><div class="tab-pane" id="example-output-leading" role="tabpanel" aria-labelledby="example-tab-leading" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">module</span> <span class="hljs-type">MyModule</span>
-    ( <span class="hljs-type">User</span> (..)
-    , createUser
-    , deleteUser
-    ) <span class="hljs-keyword">where</span>
+adminUsers :: [<span class="hljs-type">String</span>]
+adminUsers = [<span class="hljs-string">"hunter2"</span>, <span class="hljs-string">"elon.musk"</span>, <span class="hljs-string">"simon.peyton.jones"</span>]
 
-<span class="hljs-keyword">import</span> <span class="hljs-type">MyModule.Internal</span>
-    ( <span class="hljs-type">User</span>
-    , createUser
-    , deleteUser
-    )
-</code></pre></div><div class="tab-pane" id="example-output-trailing" role="tabpanel" aria-labelledby="example-tab-trailing" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">module</span> <span class="hljs-type">MyModule</span>
-    ( <span class="hljs-type">User</span> (..),
-      createUser,
-      deleteUser,
-    ) <span class="hljs-keyword">where</span>
+regularUsers :: [<span class="hljs-type">String</span>]
+regularUsers = [<span class="hljs-string">"alice"</span>, <span class="hljs-string">"bob"</span>, <span class="hljs-string">"charlie"</span>, <span class="hljs-string">"david"</span>, <span class="hljs-string">"eve"</span>, <span class="hljs-string">"felicia"</span>, <span class="hljs-string">"greg"</span>, <span class="hljs-string">"hailey"</span>, <span class="hljs-string">"isaac"</span>]
+</code></pre></div><div class="tab-pane" id="example-output-40-characters" role="tabpanel" aria-labelledby="example-tab-40-characters" tabindex="0"><pre><code class="language-haskell hljs">rootUsers :: [<span class="hljs-type">String</span>]
+rootUsers = [<span class="hljs-string">"root"</span>]
 
-<span class="hljs-keyword">import</span> <span class="hljs-type">MyModule.Internal</span>
-    ( <span class="hljs-type">User</span>,
-      createUser,
-      deleteUser,
-    )
-</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/import-export">test files</a>.</p>
-<h2>See also</h2>
-<ul><li><p><a href="../../config/comma-style"><code>comma-style</code></a></p>
-</li>
-</ul>
+adminUsers :: [<span class="hljs-type">String</span>]
+adminUsers =
+    [ <span class="hljs-string">"hunter2"</span>
+    , <span class="hljs-string">"elon.musk"</span>
+    , <span class="hljs-string">"simon.peyton.jones"</span>
+    ]
+
+regularUsers :: [<span class="hljs-type">String</span>]
+regularUsers =
+    [ <span class="hljs-string">"alice"</span>
+    , <span class="hljs-string">"bob"</span>
+    , <span class="hljs-string">"charlie"</span>
+    , <span class="hljs-string">"david"</span>
+    , <span class="hljs-string">"eve"</span>
+    , <span class="hljs-string">"felicia"</span>
+    , <span class="hljs-string">"greg"</span>
+    , <span class="hljs-string">"hailey"</span>
+    , <span class="hljs-string">"isaac"</span>
+    ]
+</code></pre></div><div class="tab-pane" id="example-output-80-characters" role="tabpanel" aria-labelledby="example-tab-80-characters" tabindex="0"><pre><code class="language-haskell hljs">rootUsers :: [<span class="hljs-type">String</span>]
+rootUsers = [<span class="hljs-string">"root"</span>]
+
+adminUsers :: [<span class="hljs-type">String</span>]
+adminUsers = [<span class="hljs-string">"hunter2"</span>, <span class="hljs-string">"elon.musk"</span>, <span class="hljs-string">"simon.peyton.jones"</span>]
+
+regularUsers :: [<span class="hljs-type">String</span>]
+regularUsers =
+    [ <span class="hljs-string">"alice"</span>
+    , <span class="hljs-string">"bob"</span>
+    , <span class="hljs-string">"charlie"</span>
+    , <span class="hljs-string">"david"</span>
+    , <span class="hljs-string">"eve"</span>
+    , <span class="hljs-string">"felicia"</span>
+    , <span class="hljs-string">"greg"</span>
+    , <span class="hljs-string">"hailey"</span>
+    , <span class="hljs-string">"isaac"</span>
+    ]
+</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/column-limit">test files</a>.</p>
 
 </main>
 

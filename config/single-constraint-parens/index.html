@@ -75,75 +75,43 @@
         
     </nav>
     <main role="main">
-    <h1><code>import-export-style</code></h1>
+    <h1><code>single-constraint-parens</code></h1>
 <table>
 <tbody>
   <tr>
     <th>Description</th>
-    <td>Styling of import/export lists</td>
+    <td>Whether to put parentheses around a single constraint</td>
   </tr>
   <tr>
     <th>Options</th>
     <td><ul>
-<li>leading</li>
-<li>trailing</li>
-<li>diff-friendly</li>
+<li>auto</li>
+<li>always</li>
+<li>never</li>
 </ul>
 </td>
   </tr>
   <tr>
     <th>Default</th>
-    <td><code>diff-friendly</code></td>
+    <td><code>always</code></td>
   </tr>
   <tr>
     <th>Ormolu</th>
-    <td><code>trailing</code></td>
+    <td><code>always</code></td>
   </tr>
   <tr>
     <th>Since</th>
-    <td>v0.8.0.0</td>
+    <td>v0.12.0.0</td>
   </tr>
 </tbody>
 </table>
+<p>The <code>detect</code> option will keep parentheses if they already exist, but won't add parentheses if not.</p>
 <h2>Examples</h2>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-diff-friendly" data-bs-toggle="tab" data-bs-target="#example-output-diff-friendly" role="tab" aria-controls="example-output-diff-friendly">diff-friendly</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-leading" data-bs-toggle="tab" data-bs-target="#example-output-leading" role="tab" aria-controls="example-output-leading">leading</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-trailing" data-bs-toggle="tab" data-bs-target="#example-output-trailing" role="tab" aria-controls="example-output-trailing">trailing</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-diff-friendly" role="tabpanel" aria-labelledby="example-tab-diff-friendly" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">module</span> <span class="hljs-type">MyModule</span> (
-    <span class="hljs-type">User</span> (..),
-    createUser,
-    deleteUser,
-) <span class="hljs-keyword">where</span>
-
-<span class="hljs-keyword">import</span> <span class="hljs-type">MyModule.Internal</span> (
-    <span class="hljs-type">User</span>,
-    createUser,
-    deleteUser,
- )
-</code></pre></div><div class="tab-pane" id="example-output-leading" role="tabpanel" aria-labelledby="example-tab-leading" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">module</span> <span class="hljs-type">MyModule</span>
-    ( <span class="hljs-type">User</span> (..)
-    , createUser
-    , deleteUser
-    ) <span class="hljs-keyword">where</span>
-
-<span class="hljs-keyword">import</span> <span class="hljs-type">MyModule.Internal</span>
-    ( <span class="hljs-type">User</span>
-    , createUser
-    , deleteUser
-    )
-</code></pre></div><div class="tab-pane" id="example-output-trailing" role="tabpanel" aria-labelledby="example-tab-trailing" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">module</span> <span class="hljs-type">MyModule</span>
-    ( <span class="hljs-type">User</span> (..),
-      createUser,
-      deleteUser,
-    ) <span class="hljs-keyword">where</span>
-
-<span class="hljs-keyword">import</span> <span class="hljs-type">MyModule.Internal</span>
-    ( <span class="hljs-type">User</span>,
-      createUser,
-      deleteUser,
-    )
-</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/import-export">test files</a>.</p>
-<h2>See also</h2>
-<ul><li><p><a href="../../config/comma-style"><code>comma-style</code></a></p>
-</li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-with-parens" data-bs-toggle="tab" data-bs-target="#example-output-with-parens" role="tab" aria-controls="example-output-with-parens">With parens</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-without-parens" data-bs-toggle="tab" data-bs-target="#example-output-without-parens" role="tab" aria-controls="example-output-without-parens">Without parens</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-with-parens" role="tabpanel" aria-labelledby="example-tab-with-parens" tabindex="0"><pre><code class="language-haskell hljs">logAction :: (<span class="hljs-type">MonadLogger</span> m) =&gt; <span class="hljs-type">String</span> -&gt; m ()
+logAction msg = logDebugN $ <span class="hljs-string">"Action: "</span> &lt;&gt; msg
+</code></pre></div><div class="tab-pane" id="example-output-without-parens" role="tabpanel" aria-labelledby="example-tab-without-parens" tabindex="0"><pre><code class="language-haskell hljs">logAction :: <span class="hljs-type">MonadLogger</span> m =&gt; <span class="hljs-type">String</span> -&gt; m ()
+logAction msg = logDebugN $ <span class="hljs-string">"Action: "</span> &lt;&gt; msg
+</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/single-constraint-parens">test files</a>.</p>
 
 </main>
 
