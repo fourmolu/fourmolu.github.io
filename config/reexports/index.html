@@ -77,51 +77,32 @@
         
     </nav>
     <main role="main">
-    <h1><code>unicode</code></h1>
+    <h1><code>reexports</code></h1>
 <table>
 <tbody>
   <tr>
     <th>Description</th>
-    <td>Output Unicode syntax</td>
+    <td>Module reexports Fourmolu should know about</td>
   </tr>
   <tr>
-    <th>Options</th>
-    <td><ul>
-<li><code>detect</code></li>
-<li><code>always</code></li>
-<li><code>never</code></li>
-</ul>
-</td>
+    <th>Type</th>
+    <td><code>[String]</code></td>
   </tr>
   <tr>
     <th>Default</th>
-    <td><code>never</code></td>
+    <td><code>[]</code></td>
   </tr>
   <tr>
     <th>Ormolu</th>
-    <td><code>never</code></td>
+    <td><code>[]</code></td>
   </tr>
   <tr>
     <th>Since</th>
-    <td>v0.9.0.0</td>
+    <td><i>Unreleased</i></td>
   </tr>
 </tbody>
 </table>
-<p>The <code>detect</code> option will check to see if the <code>-XUnicode</code> extension is enabled for a file; if so, turns on unicode, otherwise, turns it off.</p>
-<h2>Examples</h2>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-without-unicode" data-bs-toggle="tab" data-bs-target="#example-output-without-unicode" role="tab" aria-controls="example-output-without-unicode">Without unicode</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-with-unicode" data-bs-toggle="tab" data-bs-target="#example-output-with-unicode" role="tab" aria-controls="example-output-with-unicode">With unicode</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-without-unicode" role="tabpanel" aria-labelledby="example-tab-without-unicode" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-meta">{-# LANGUAGE UnicodeSyntax #-}</span>
-
-loadUser :: <span class="hljs-keyword">forall</span> m. (<span class="hljs-type">MonadIO</span> m) =&gt; <span class="hljs-type">String</span> -&gt; m <span class="hljs-type">User</span>
-loadUser username = <span class="hljs-keyword">do</span>
-    mUser &lt;- getUser username
-    maybe (error <span class="hljs-string">"Unknown user"</span>) pure mUser
-</code></pre></div><div class="tab-pane" id="example-output-with-unicode" role="tabpanel" aria-labelledby="example-tab-with-unicode" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-meta">{-# LANGUAGE UnicodeSyntax #-}</span>
-
-loadUser ∷ <span class="hljs-keyword">∀</span> m. (<span class="hljs-type">MonadIO</span> m) ⇒ <span class="hljs-type">String</span> → m <span class="hljs-type">User</span>
-loadUser username = <span class="hljs-keyword">do</span>
-    mUser ← getUser username
-    maybe (error <span class="hljs-string">"Unknown user"</span>) pure mUser
-</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/unicode-syntax">test files</a>.</p>
+<p>See the <a href="https://github.com/fourmolu/fourmolu#language-extensions-dependencies-and-fixities">section in the README</a> for more info.</p>
 
 </main>
 
