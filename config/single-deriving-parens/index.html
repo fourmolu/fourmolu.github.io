@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Fourmolu &mdash; haddock-style-module</title>
+        <title>Fourmolu &mdash; single-deriving-parens</title>
         <!-- Code highlighting -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/equilibrium-gray-light.min.css" />
         <!-- General style -->
@@ -79,35 +79,15 @@
         
     </nav>
     <main role="main">
-    <h1><code>haddock-style-module</code></h1>
-<table id="config-info"><tbody><tr><th>Description</th><td>How to print module docstring</td></tr><tr><th>Options</th><td><ul><li><code>null</code></li><li><code>single-line</code></li><li><code>multi-line</code></li><li><code>multi-line-compact</code></li></ul></td></tr><tr><th>Default</th><td><code>null</code></td></tr><tr><th>Ormolu</th><td><code>null</code></td></tr><tr><th>Since</th><td>v0.10.0.0</td></tr></tbody></table>
-<p>This option determines what Haddock style to use for the module docstring. When this option is set to <code>null</code> (the default), uses the same value as <code>haddock-style</code>.</p>
+    <h1><code>single-deriving-parens</code></h1>
+<table id="config-info"><tbody><tr><th>Description</th><td>Whether to put parentheses around a single deriving class</td></tr><tr><th>Options</th><td><ul><li><code>auto</code></li><li><code>always</code></li><li><code>never</code></li></ul></td></tr><tr><th>Default</th><td><code>always</code></td></tr><tr><th>Ormolu</th><td><code>always</code></td></tr><tr><th>Since</th><td><i>Unreleased</i></td></tr></tbody></table>
+<p>The <code>auto</code> option will keep parentheses if they already exist, but won't add parentheses if not.</p>
 <h2>Examples</h2>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-multi-line" data-bs-toggle="tab" data-bs-target="#example-output-multi-line" role="tab" aria-controls="example-output-multi-line">multi-line</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-single-line" data-bs-toggle="tab" data-bs-target="#example-output-single-line" role="tab" aria-controls="example-output-single-line">single-line</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-multi-line-compact" data-bs-toggle="tab" data-bs-target="#example-output-multi-line-compact" role="tab" aria-controls="example-output-multi-line-compact">multi-line-compact</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-multi-line" role="tabpanel" aria-labelledby="example-tab-multi-line" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-comment">{- |
-Module: MyModule
-Author: Joe Haskell
-
-The primary API for my library.
--}</span>
-<span class="hljs-keyword">module</span> <span class="hljs-type">MyModule</span> <span class="hljs-keyword">where</span>
-</code></pre></div><div class="tab-pane" id="example-output-single-line" role="tabpanel" aria-labelledby="example-tab-single-line" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-comment">-- |
--- Module: MyModule
--- Author: Joe Haskell
---
--- The primary API for my library.</span>
-<span class="hljs-keyword">module</span> <span class="hljs-type">MyModule</span> <span class="hljs-keyword">where</span>
-</code></pre></div><div class="tab-pane" id="example-output-multi-line-compact" role="tabpanel" aria-labelledby="example-tab-multi-line-compact" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-comment">{-|
-Module: MyModule
-Author: Joe Haskell
-
-The primary API for my library.
--}</span>
-<span class="hljs-keyword">module</span> <span class="hljs-type">MyModule</span> <span class="hljs-keyword">where</span>
-</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/haddock-style">test files</a>.</p>
-<h2>See also</h2>
-<ul><li><p><a href="../../config/haddock-style"><code>haddock-style</code></a></p>
-</li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-with-parens" data-bs-toggle="tab" data-bs-target="#example-output-with-parens" role="tab" aria-controls="example-output-with-parens">With parens</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-without-parens" data-bs-toggle="tab" data-bs-target="#example-output-without-parens" role="tab" aria-controls="example-output-without-parens">Without parens</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-with-parens" role="tabpanel" aria-labelledby="example-tab-with-parens" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">data</span> <span class="hljs-type">Foo</span> = <span class="hljs-type">Foo</span>
+    <span class="hljs-keyword">deriving</span> <span class="hljs-keyword">stock</span> (<span class="hljs-type">Show</span>)
+</code></pre></div><div class="tab-pane" id="example-output-without-parens" role="tabpanel" aria-labelledby="example-tab-without-parens" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">data</span> <span class="hljs-type">Foo</span> = <span class="hljs-type">Foo</span>
+    <span class="hljs-keyword">deriving</span> <span class="hljs-keyword">stock</span> <span class="hljs-type">Show</span>
+</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/single-deriving-parens">test files</a>.</p>
 
 </main>
 
