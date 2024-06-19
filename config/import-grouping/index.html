@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fourmolu &mdash; import-grouping</title>
+        <!-- Code highlighting -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/equilibrium-gray-light.min.css" />
+        <!-- General style -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" integrity="sha512-zb2pp+R+czM7GAemdSUQt6jFmr3qCo6ikvBgVU6F5GvwEDR0C2sefFiPEJ9QUpmAKdD5EqDUdNRtbOYnbF/eyQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous" defer></script>
+        <!-- Custom style -->
+        <link rel="stylesheet" href="../../static/style.css" />
+    </head>
+    <body class="markdown-body">
+        <nav class="navbar navbar-expand bg-primary-subtle" aria-label="main navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../">Fourmolu</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../config">Configuration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../changelog">Changelog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://hackage.haskell.org/package/fourmolu">Hackage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/fourmolu/fourmolu">Github</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        
+        <div class="sidebar-container">
+    <nav class="sidebar nav flex-column" aria-label="sidebar">
+        <h3 class="nav-link disabled">Configuration options</h3>
+        
+          <a class="nav-link" href="../../config/indentation">indentation</a>
+        
+          <a class="nav-link" href="../../config/column-limit">column-limit</a>
+        
+          <a class="nav-link" href="../../config/function-arrows">function-arrows</a>
+        
+          <a class="nav-link" href="../../config/comma-style">comma-style</a>
+        
+          <a class="nav-link" href="../../config/import-export-style">import-export-style</a>
+        
+          <a class="nav-link" href="../../config/indent-wheres">indent-wheres</a>
+        
+          <a class="nav-link" href="../../config/record-brace-space">record-brace-space</a>
+        
+          <a class="nav-link" href="../../config/newlines-between-decls">newlines-between-decls</a>
+        
+          <a class="nav-link" href="../../config/haddock-style">haddock-style</a>
+        
+          <a class="nav-link" href="../../config/haddock-style-module">haddock-style-module</a>
+        
+          <a class="nav-link" href="../../config/let-style">let-style</a>
+        
+          <a class="nav-link" href="../../config/in-style">in-style</a>
+        
+          <a class="nav-link" href="../../config/single-constraint-parens">single-constraint-parens</a>
+        
+          <a class="nav-link" href="../../config/single-deriving-parens">single-deriving-parens</a>
+        
+          <a class="nav-link" href="../../config/unicode">unicode</a>
+        
+          <a class="nav-link" href="../../config/respectful">respectful</a>
+        
+          <a class="nav-link" href="../../config/fixities">fixities</a>
+        
+          <a class="nav-link" href="../../config/reexports">reexports</a>
+        
+          <a class="nav-link" href="../../config/import-grouping">import-grouping</a>
+        
+          <a class="nav-link" href="../../config/local-modules">local-modules</a>
+        
+    </nav>
+    <main role="main">
+    <h1><code>import-grouping</code></h1>
+<table id="config-info"><tbody><tr><th>Description</th><td>Rules for grouping import declarations</td></tr><tr><th>Options</th><td><ul><li><code>legacy</code></li><li><code>preserve</code></li><li><code>single</code></li><li><code>by-qualified</code></li><li><code>by-scope</code></li><li><code>by-scope-then-qualified</code></li></ul></td></tr><tr><th>Default</th><td><code>legacy</code></td></tr><tr><th>Ormolu</th><td><code>legacy</code></td></tr><tr><th>Since</th><td><i>Unreleased</i></td></tr></tbody></table>
+<p>Some basic presets are provided but you can configure your own rules via a dedicated YAML configuration.</p>
+<p>Predefined presets:</p>
+<ul><li><p><code>legacy</code>: adopt the legacy behavior (before version 0.17), i.e., <code>single</code> when <code>respectful</code> is <code>false</code> and <code>preserve</code> when <code>respectful</code> is true. See <a href="../../config/respectful"><code>respectful</code></a>.</p>
+</li>
+<li><p><code>preserve</code>: preserve the existing import groups</p>
+</li>
+<li><p><code>single</code>: single group of imports</p>
+</li>
+<li><p><code>by-qualified</code>: one group for unqualified imports, then one group for qualified imports</p>
+</li>
+<li><p><code>by-scope</code>: one group for external imports, then one group for imports targeting modules from the current Cabal project</p>
+</li>
+<li><p><code>by-scope-then-qualified</code>: apply <code>by-scope</code> first, then <code>by-qualified</code></p>
+</li>
+</ul>
+<p>Predefined matchers:</p>
+<ul><li><p><code>match: all</code>: matches all modules</p>
+</li>
+<li><p><code>match: local-modules</code>: matches modules defined in the current Cabal project. Those modules are automatically detected. Developers can add custom modules through the <code>--local-modules</code> CLI option. See <a href="../../config/local-modules"><code>local-modules</code></a> for more information.</p>
+</li>
+<li><p><code>glob: pattern</code>: matches modules matching the provided <code>pattern</code>. <code>*</code> can be any character on the same module level. <code>**</code> can be any character and can span multiple module levels.</p>
+</li>
+</ul>
+<p>Here's an example used in the <code>custom</code> configuration:</p>
+<pre><code class="language-yaml">import-grouping:
+  - name: &quot;Text modules&quot;
+    rules:
+      - glob: Data.Text
+  - name: &quot;The rest&quot;
+    rules:
+      - match: all
+        priority: 100
+  - name: &quot;My internals and monads unqualified&quot;
+    rules:
+      - match: local-modules
+        qualified: no
+      - glob: Control.Monad
+        qualified: no
+  - name: &quot;My internals and monads qualified&quot;
+    rules:
+      - match: local-modules
+        qualified: yes
+      - glob: Control.Monad
+        qualified: yes
+  - name: &quot;Specific monads&quot;
+    rules:
+      - glob: Control.Monad.**
+</code></pre><h2>Examples</h2>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-single" data-bs-toggle="tab" data-bs-target="#example-output-single" role="tab" aria-controls="example-output-single">single</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-by-qualified" data-bs-toggle="tab" data-bs-target="#example-output-by-qualified" role="tab" aria-controls="example-output-by-qualified">by-qualified</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-by-scope" data-bs-toggle="tab" data-bs-target="#example-output-by-scope" role="tab" aria-controls="example-output-by-scope">by-scope</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-by-scope-then-qualified" data-bs-toggle="tab" data-bs-target="#example-output-by-scope-then-qualified" role="tab" aria-controls="example-output-by-scope-then-qualified">by-scope-then-qualified</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-custom" data-bs-toggle="tab" data-bs-target="#example-output-custom" role="tab" aria-controls="example-output-custom">custom</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-single" role="tabpanel" aria-labelledby="example-tab-single" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad</span> (<span class="hljs-type">Monad</span> (..))
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Control.Monad.Error</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Error</span>
+<span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad.State.Lazy</span> (<span class="hljs-type">MonadState</span> (..))
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Maybe</span> (maybe)
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text</span> (<span class="hljs-type">Text</span>)
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Data.Text</span>
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text.IO</span> (hGetLine)
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1</span> (anotherDefinition, someDefinition)
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1.SubModuleA</span>
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">SomeInternal.Module2</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Mod2</span>
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">System.IO</span> <span class="hljs-keyword">as</span> <span class="hljs-type">SIO</span>
+<span class="hljs-keyword">import</span> <span class="hljs-type">Text.Printf</span> (printf)
+</code></pre></div><div class="tab-pane" id="example-output-by-qualified" role="tabpanel" aria-labelledby="example-tab-by-qualified" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad</span> (<span class="hljs-type">Monad</span> (..))
+<span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad.State.Lazy</span> (<span class="hljs-type">MonadState</span> (..))
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Maybe</span> (maybe)
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text</span> (<span class="hljs-type">Text</span>)
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text.IO</span> (hGetLine)
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1</span> (anotherDefinition, someDefinition)
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1.SubModuleA</span>
+<span class="hljs-keyword">import</span> <span class="hljs-type">Text.Printf</span> (printf)
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Control.Monad.Error</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Error</span>
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Data.Text</span>
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">SomeInternal.Module2</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Mod2</span>
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">System.IO</span> <span class="hljs-keyword">as</span> <span class="hljs-type">SIO</span>
+</code></pre></div><div class="tab-pane" id="example-output-by-scope" role="tabpanel" aria-labelledby="example-tab-by-scope" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad</span> (<span class="hljs-type">Monad</span> (..))
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Control.Monad.Error</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Error</span>
+<span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad.State.Lazy</span> (<span class="hljs-type">MonadState</span> (..))
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Maybe</span> (maybe)
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text</span> (<span class="hljs-type">Text</span>)
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Data.Text</span>
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text.IO</span> (hGetLine)
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">System.IO</span> <span class="hljs-keyword">as</span> <span class="hljs-type">SIO</span>
+<span class="hljs-keyword">import</span> <span class="hljs-type">Text.Printf</span> (printf)
+
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1</span> (anotherDefinition, someDefinition)
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1.SubModuleA</span>
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">SomeInternal.Module2</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Mod2</span>
+</code></pre></div><div class="tab-pane" id="example-output-by-scope-then-qualified" role="tabpanel" aria-labelledby="example-tab-by-scope-then-qualified" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad</span> (<span class="hljs-type">Monad</span> (..))
+<span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad.State.Lazy</span> (<span class="hljs-type">MonadState</span> (..))
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Maybe</span> (maybe)
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text</span> (<span class="hljs-type">Text</span>)
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text.IO</span> (hGetLine)
+<span class="hljs-keyword">import</span> <span class="hljs-type">Text.Printf</span> (printf)
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Control.Monad.Error</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Error</span>
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Data.Text</span>
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">System.IO</span> <span class="hljs-keyword">as</span> <span class="hljs-type">SIO</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1</span> (anotherDefinition, someDefinition)
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1.SubModuleA</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">SomeInternal.Module2</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Mod2</span>
+</code></pre></div><div class="tab-pane" id="example-output-custom" role="tabpanel" aria-labelledby="example-tab-custom" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text</span> (<span class="hljs-type">Text</span>)
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Data.Text</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Maybe</span> (maybe)
+<span class="hljs-keyword">import</span> <span class="hljs-type">Data.Text.IO</span> (hGetLine)
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">System.IO</span> <span class="hljs-keyword">as</span> <span class="hljs-type">SIO</span>
+<span class="hljs-keyword">import</span> <span class="hljs-type">Text.Printf</span> (printf)
+
+<span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad</span> (<span class="hljs-type">Monad</span> (..))
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1</span> (anotherDefinition, someDefinition)
+<span class="hljs-keyword">import</span> <span class="hljs-type">SomeInternal.Module1.SubModuleA</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">SomeInternal.Module2</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Mod2</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">qualified</span> <span class="hljs-type">Control.Monad.Error</span> <span class="hljs-keyword">as</span> <span class="hljs-type">Error</span>
+<span class="hljs-keyword">import</span> <span class="hljs-type">Control.Monad.State.Lazy</span> (<span class="hljs-type">MonadState</span> (..))
+</code></pre></div></div><!-- NOTE The configuration above is the JSON equivalent from the aforementioned YAML configuration. Please keep them in sync. -->
+<p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/import-grouping">test files</a>.</p>
+<h2>See also</h2>
+<ul><li><p><a href="../../config/respectful"><code>respectful</code></a></p>
+</li>
+</ul>
+
+</main>
+
+</div>
+
+        
+
+        <footer class="border-top border-secondary-subtle mt-5 p-4">
+            <p>
+                Documentation built from commit
+                <a href="https://github.com/fourmolu/fourmolu/tree/7380fb62a78a80deaa696ec0d29495556262827b"><code>7380fb62a78a80deaa696ec0d29495556262827b</code></a>
+            </p>
+            <p>
+                Site proudly generated by
+                <a href="https://jaspervdj.be/hakyll">Hakyll</a>
+            </p>
+        </footer>
+    </body>
+</html>
