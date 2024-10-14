@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Fourmolu &mdash; haddock-style</title>
+        <title>Fourmolu &mdash; sort-constraints</title>
         <!-- Code highlighting -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/equilibrium-gray-light.min.css" />
         <!-- General style -->
@@ -85,34 +85,16 @@
         
     </nav>
     <main role="main">
-    <h1><code>haddock-style</code></h1>
-<table id="config-info"><tbody><tr><th>Description</th><td>How to print Haddock comments</td></tr><tr><th>Options</th><td><ul><li><code>single-line</code></li><li><code>multi-line</code></li><li><code>multi-line-compact</code></li></ul></td></tr><tr><th>Default</th><td><code>multi-line</code></td></tr><tr><th>Ormolu</th><td><code>single-line</code></td></tr><tr><th>Since</th><td>v0.2.0.0</td></tr></tbody></table>
+    <h1><code>sort-constraints</code></h1>
+<table id="config-info"><tbody><tr><th>Description</th><td>Whether to sort constraints</td></tr><tr><th>Type</th><td><code>Bool</code></td></tr><tr><th>Default</th><td><code>false</code></td></tr><tr><th>Ormolu</th><td><code>false</code></td></tr><tr><th>Since</th><td><i>Unreleased</i></td></tr></tbody></table>
+<p>This option determines whether or not to sort constraints.</p>
+<p>The sorting applies wherever we can determine that a constraint tuple is in fact a constraint tuple type (and not a normal tuple type).
+In some situations we cannot determine this and so the constraints are not sorted.</p>
+<p>Note that using this option may result in comments inside constraints being moved to unexpected locations.</p>
 <h2>Examples</h2>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-multi-line" data-bs-toggle="tab" data-bs-target="#example-output-multi-line" role="tab" aria-controls="example-output-multi-line">multi-line</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-single-line" data-bs-toggle="tab" data-bs-target="#example-output-single-line" role="tab" aria-controls="example-output-single-line">single-line</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-multi-line-compact" data-bs-toggle="tab" data-bs-target="#example-output-multi-line-compact" role="tab" aria-controls="example-output-multi-line-compact">multi-line-compact</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-multi-line" role="tabpanel" aria-labelledby="example-tab-multi-line" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-comment">-- | Get the user with the given username</span>
-getUser :: <span class="hljs-type">String</span> -&gt; <span class="hljs-type">IO</span> (<span class="hljs-type">Maybe</span> <span class="hljs-type">User</span>)
-
-<span class="hljs-comment">{- | Same as 'getUsername', except throw
-an error if the user doesn't exist.
--}</span>
-loadUser :: <span class="hljs-type">String</span> -&gt; <span class="hljs-type">IO</span> <span class="hljs-type">User</span>
-</code></pre></div><div class="tab-pane" id="example-output-single-line" role="tabpanel" aria-labelledby="example-tab-single-line" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-comment">-- | Get the user with the given username</span>
-getUser :: <span class="hljs-type">String</span> -&gt; <span class="hljs-type">IO</span> (<span class="hljs-type">Maybe</span> <span class="hljs-type">User</span>)
-
-<span class="hljs-comment">-- | Same as 'getUsername', except throw
--- an error if the user doesn't exist.</span>
-loadUser :: <span class="hljs-type">String</span> -&gt; <span class="hljs-type">IO</span> <span class="hljs-type">User</span>
-</code></pre></div><div class="tab-pane" id="example-output-multi-line-compact" role="tabpanel" aria-labelledby="example-tab-multi-line-compact" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-comment">-- | Get the user with the given username</span>
-getUser :: <span class="hljs-type">String</span> -&gt; <span class="hljs-type">IO</span> (<span class="hljs-type">Maybe</span> <span class="hljs-type">User</span>)
-
-<span class="hljs-comment">{-| Same as 'getUsername', except throw
-an error if the user doesn't exist.
--}</span>
-loadUser :: <span class="hljs-type">String</span> -&gt; <span class="hljs-type">IO</span> <span class="hljs-type">User</span>
-</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/haddock-style">test files</a>.</p>
-<h2>See also</h2>
-<ul><li><p><a href="../../config/haddock-style-module"><code>haddock-style-module</code></a></p>
-</li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-with-sorting" data-bs-toggle="tab" data-bs-target="#example-output-with-sorting" role="tab" aria-controls="example-output-with-sorting">With sorting</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-without-sorting" data-bs-toggle="tab" data-bs-target="#example-output-without-sorting" role="tab" aria-controls="example-output-without-sorting">Without sorting</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-with-sorting" role="tabpanel" aria-labelledby="example-tab-with-sorting" tabindex="0"><pre><code class="language-haskell hljs">f :: (<span class="hljs-type">Eq</span> a, <span class="hljs-type">Show</span> a) =&gt; a
+</code></pre></div><div class="tab-pane" id="example-output-without-sorting" role="tabpanel" aria-labelledby="example-tab-without-sorting" tabindex="0"><pre><code class="language-haskell hljs">f :: (<span class="hljs-type">Show</span> a, <span class="hljs-type">Eq</span> a) =&gt; a
+</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/sort-constraints">test files</a>.</p>
 
 </main>
 
