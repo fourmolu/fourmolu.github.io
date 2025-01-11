@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Fourmolu &mdash; comma-style</title>
+        <title>Fourmolu &mdash; trailing-section-operators</title>
         <!-- Code highlighting -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/equilibrium-gray-light.min.css" />
         <!-- General style -->
@@ -91,38 +91,22 @@
         
     </nav>
     <main role="main">
-    <h1><code>comma-style</code></h1>
-<table id="config-info"><tbody><tr><th>Description</th><td>How to place commas in multi-line lists, records, etc.</td></tr><tr><th>Options</th><td><ul><li><code>leading</code></li><li><code>trailing</code></li></ul></td></tr><tr><th>Default</th><td><code>leading</code></td></tr><tr><th>Ormolu</th><td><code>trailing</code></td></tr><tr><th>Since</th><td>v0.2.0.0</td></tr></tbody></table>
+    <h1><code>trailing-section-operators</code></h1>
+<table id="config-info"><tbody><tr><th>Description</th><td>Whether to place section operators (those that are infixr 0, such as $) in trailing position, continuing the expression indented below</td></tr><tr><th>Type</th><td><code>Bool</code></td></tr><tr><th>Default</th><td><code>true</code></td></tr><tr><th>Ormolu</th><td><code>true</code></td></tr><tr><th>Since</th><td>v0.17.0.0</td></tr></tbody></table>
 <h2>Examples</h2>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-leading" data-bs-toggle="tab" data-bs-target="#example-output-leading" role="tab" aria-controls="example-output-leading">leading</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-trailing" data-bs-toggle="tab" data-bs-target="#example-output-trailing" role="tab" aria-controls="example-output-trailing">trailing</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-leading" role="tabpanel" aria-labelledby="example-tab-leading" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">data</span> <span class="hljs-type">User</span> = <span class="hljs-type">User</span>
-    { userName :: <span class="hljs-type">String</span>
-    , userAge :: <span class="hljs-type">Int</span>
-    , userActive :: <span class="hljs-type">Bool</span>
-    }
-
-forbiddenPasswords :: [<span class="hljs-type">String</span>]
-forbiddenPasswords =
-    [ <span class="hljs-string">"password"</span>
-    , <span class="hljs-string">"hunter2"</span>
-    , <span class="hljs-string">"123456"</span>
-    ]
-</code></pre></div><div class="tab-pane" id="example-output-trailing" role="tabpanel" aria-labelledby="example-tab-trailing" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">data</span> <span class="hljs-type">User</span> = <span class="hljs-type">User</span>
-    { userName :: <span class="hljs-type">String</span>,
-      userAge :: <span class="hljs-type">Int</span>,
-      userActive :: <span class="hljs-type">Bool</span>
-    }
-
-forbiddenPasswords :: [<span class="hljs-type">String</span>]
-forbiddenPasswords =
-    [ <span class="hljs-string">"password"</span>,
-      <span class="hljs-string">"hunter2"</span>,
-      <span class="hljs-string">"123456"</span>
-    ]
-</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/comma-style">test files</a>.</p>
-<h2>See also</h2>
-<ul><li><p><a href="../../config/import-export-style"><code>import-export-style</code></a></p>
-</li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-with-trailing-section-operators" data-bs-toggle="tab" data-bs-target="#example-output-with-trailing-section-operators" role="tab" aria-controls="example-output-with-trailing-section-operators">With trailing section operators</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-without-trailing-section-operators" data-bs-toggle="tab" data-bs-target="#example-output-without-trailing-section-operators" role="tab" aria-controls="example-output-without-trailing-section-operators">Without trailing section operators</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-with-trailing-section-operators" role="tabpanel" aria-labelledby="example-tab-with-trailing-section-operators" tabindex="0"><pre><code class="language-haskell hljs">foo :: <span class="hljs-type">IO</span> ()
+foo =
+    bar $
+        baz $
+            bat $
+                quiz x
+</code></pre></div><div class="tab-pane" id="example-output-without-trailing-section-operators" role="tabpanel" aria-labelledby="example-tab-without-trailing-section-operators" tabindex="0"><pre><code class="language-haskell hljs">foo :: <span class="hljs-type">IO</span> ()
+foo =
+    bar
+        $ baz
+        $ bat
+        $ quiz x
+</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/trailing-section-operators">test files</a>.</p>
 
 </main>
 

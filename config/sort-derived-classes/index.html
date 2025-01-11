@@ -51,6 +51,8 @@
         
           <a class="nav-link" href="../../config/import-export-style">import-export-style</a>
         
+          <a class="nav-link" href="../../config/import-grouping">import-grouping</a>
+        
           <a class="nav-link" href="../../config/indent-wheres">indent-wheres</a>
         
           <a class="nav-link" href="../../config/record-brace-space">record-brace-space</a>
@@ -69,6 +71,14 @@
         
           <a class="nav-link" href="../../config/single-deriving-parens">single-deriving-parens</a>
         
+          <a class="nav-link" href="../../config/sort-constraints">sort-constraints</a>
+        
+          <a class="nav-link" href="../../config/sort-derived-classes">sort-derived-classes</a>
+        
+          <a class="nav-link" href="../../config/sort-deriving-clauses">sort-deriving-clauses</a>
+        
+          <a class="nav-link" href="../../config/trailing-section-operators">trailing-section-operators</a>
+        
           <a class="nav-link" href="../../config/unicode">unicode</a>
         
           <a class="nav-link" href="../../config/respectful">respectful</a>
@@ -77,27 +87,19 @@
         
           <a class="nav-link" href="../../config/reexports">reexports</a>
         
-          <a class="nav-link" href="../../config/import-grouping">import-grouping</a>
-        
           <a class="nav-link" href="../../config/local-modules">local-modules</a>
-        
-          <a class="nav-link" href="../../config/sort-constraints">sort-constraints</a>
-        
-          <a class="nav-link" href="../../config/sort-derived-classes">sort-derived-classes</a>
-        
-          <a class="nav-link" href="../../config/sort-deriving-clauses">sort-deriving-clauses</a>
         
     </nav>
     <main role="main">
     <h1><code>sort-derived-classes</code></h1>
-<table id="config-info"><tbody><tr><th>Description</th><td>Whether to sort derived classes</td></tr><tr><th>Type</th><td><code>Bool</code></td></tr><tr><th>Default</th><td><code>false</code></td></tr><tr><th>Ormolu</th><td><code>false</code></td></tr><tr><th>Since</th><td><i>Unreleased</i></td></tr></tbody></table>
-<p>This option determines whether classes in deriving clauses are sorted.</p>
+<table id="config-info"><tbody><tr><th>Description</th><td>Whether to sort derived classes</td></tr><tr><th>Type</th><td><code>Bool</code></td></tr><tr><th>Default</th><td><code>false</code></td></tr><tr><th>Ormolu</th><td><code>false</code></td></tr><tr><th>Since</th><td>v0.17.0.0</td></tr></tbody></table>
+<p>This option determines whether classes in deriving clauses should be sorted alphabetically or left alone.</p>
 <p>Note that using this option may cause comments inside deriving clauses to be misplaced.</p>
 <h2>Examples</h2>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-with-sorting" data-bs-toggle="tab" data-bs-target="#example-output-with-sorting" role="tab" aria-controls="example-output-with-sorting">With sorting</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-without-sorting" data-bs-toggle="tab" data-bs-target="#example-output-without-sorting" role="tab" aria-controls="example-output-without-sorting">Without sorting</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-with-sorting" role="tabpanel" aria-labelledby="example-tab-with-sorting" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">data</span> <span class="hljs-type">A</span>
-    <span class="hljs-keyword">deriving</span> <span class="hljs-keyword">stock</span> (<span class="hljs-type">Eq</span>, <span class="hljs-type">Generic</span>, <span class="hljs-type">Ord</span>, <span class="hljs-type">Show</span>)
-</code></pre></div><div class="tab-pane" id="example-output-without-sorting" role="tabpanel" aria-labelledby="example-tab-without-sorting" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">data</span> <span class="hljs-type">A</span>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-without-sorting" data-bs-toggle="tab" data-bs-target="#example-output-without-sorting" role="tab" aria-controls="example-output-without-sorting">Without sorting</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-with-sorting" data-bs-toggle="tab" data-bs-target="#example-output-with-sorting" role="tab" aria-controls="example-output-with-sorting">With sorting</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-without-sorting" role="tabpanel" aria-labelledby="example-tab-without-sorting" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">data</span> <span class="hljs-type">A</span>
     <span class="hljs-keyword">deriving</span> <span class="hljs-keyword">stock</span> (<span class="hljs-type">Show</span>, <span class="hljs-type">Eq</span>, <span class="hljs-type">Ord</span>, <span class="hljs-type">Generic</span>)
+</code></pre></div><div class="tab-pane" id="example-output-with-sorting" role="tabpanel" aria-labelledby="example-tab-with-sorting" tabindex="0"><pre><code class="language-haskell hljs"><span class="hljs-keyword">data</span> <span class="hljs-type">A</span>
+    <span class="hljs-keyword">deriving</span> <span class="hljs-keyword">stock</span> (<span class="hljs-type">Eq</span>, <span class="hljs-type">Generic</span>, <span class="hljs-type">Ord</span>, <span class="hljs-type">Show</span>)
 </code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/sort-derived-classes">test files</a>.</p>
 
 </main>
@@ -109,7 +111,7 @@
         <footer class="border-top border-secondary-subtle mt-5 p-4">
             <p>
                 Documentation built from commit
-                <a href="https://github.com/fourmolu/fourmolu/tree/37871037fe86fd8b16caa6d826e50fb667ed7773"><code>37871037fe86fd8b16caa6d826e50fb667ed7773</code></a>
+                <a href="https://github.com/fourmolu/fourmolu/tree/a507cccf92201173ba6b2b49ff903b35f23c5f51"><code>a507cccf92201173ba6b2b49ff903b35f23c5f51</code></a>
             </p>
             <p>
                 Site proudly generated by
