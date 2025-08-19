@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Fourmolu &mdash; shifted-ifs</title>
+        <title>Fourmolu &mdash; if-style</title>
         <!-- Code highlighting -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/equilibrium-gray-light.min.css" />
         <!-- General style -->
@@ -69,6 +69,8 @@
         
           <a class="nav-link" href="../../config/in-style">in-style</a>
         
+          <a class="nav-link" href="../../config/if-style">if-style</a>
+        
           <a class="nav-link" href="../../config/single-constraint-parens">single-constraint-parens</a>
         
           <a class="nav-link" href="../../config/single-deriving-parens">single-deriving-parens</a>
@@ -91,17 +93,13 @@
         
           <a class="nav-link" href="../../config/local-modules">local-modules</a>
         
-          <a class="nav-link" href="../../config/shifted-ifs">shifted-ifs</a>
-        
     </nav>
     <main role="main">
-    <h1><code>shifted-ifs</code></h1>
-<table id="config-info"><tbody><tr><th>Description</th><td>Remove extra indentation for `then` and `else`</td></tr><tr><th>Type</th><td><code>Bool</code></td></tr><tr><th>Default</th><td><code>false</code></td></tr><tr><th>Ormolu</th><td><code>false</code></td></tr><tr><th>Since</th><td><i>Unreleased</i></td></tr></tbody></table>
-<p>This option determines whether the keywords <code>then</code> and <code>else</code> should have their own level of indentantion.</p>
-<p><code>false</code> value (default) adds an extra level of indentation for keywords <code>then</code> and <code>else</code>. It looks more consistent with <code>case</code> branches.</p>
-<p><code>true</code> adds indentation only for branches. It looks more consistent with if-else blocks in other languages.</p>
+    <h1><code>if-style</code></h1>
+<table id="config-info"><tbody><tr><th>Description</th><td>Styling of if-statements</td></tr><tr><th>Options</th><td><ul><li><code>indented</code></li><li><code>hanging</code></li></ul></td></tr><tr><th>Default</th><td><code>indented</code></td></tr><tr><th>Ormolu</th><td><code>indented</code></td></tr><tr><th>Since</th><td><i>Unreleased</i></td></tr></tbody></table>
+<p>This option determines whether the keywords <code>then</code> and <code>else</code> should be indented (the default) or hanging off the current indentation. Indenting looks more consistent with <code>case</code> statements, while hanging looks more consistent with if-statements in other languages.</p>
 <h2>Examples</h2>
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-disable-shifted-ifs" data-bs-toggle="tab" data-bs-target="#example-output-disable-shifted-ifs" role="tab" aria-controls="example-output-disable-shifted-ifs">Disable shifted ifs</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-enable-shifted-ifs" data-bs-toggle="tab" data-bs-target="#example-output-enable-shifted-ifs" role="tab" aria-controls="example-output-enable-shifted-ifs">Enable shifted ifs</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-disable-shifted-ifs" role="tabpanel" aria-labelledby="example-tab-disable-shifted-ifs" tabindex="0"><pre><code class="language-haskell hljs">testUser =
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><button class="nav-link active" id="example-tab-indented" data-bs-toggle="tab" data-bs-target="#example-output-indented" role="tab" aria-controls="example-output-indented">Indented</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="example-tab-hanging" data-bs-toggle="tab" data-bs-target="#example-output-hanging" role="tab" aria-controls="example-output-hanging">Hanging</button></li></ul><div class="tab-content"><div class="tab-pane active" id="example-output-indented" role="tabpanel" aria-labelledby="example-tab-indented" tabindex="0"><pre><code class="language-haskell hljs">testUser =
     <span class="hljs-keyword">if</span> condition
         <span class="hljs-keyword">then</span> <span class="hljs-keyword">do</span>
             first
@@ -114,7 +112,7 @@
                 <span class="hljs-keyword">else</span> <span class="hljs-keyword">do</span>
                     third
                     branch
-</code></pre></div><div class="tab-pane" id="example-output-enable-shifted-ifs" role="tabpanel" aria-labelledby="example-tab-enable-shifted-ifs" tabindex="0"><pre><code class="language-haskell hljs">testUser =
+</code></pre></div><div class="tab-pane" id="example-output-hanging" role="tabpanel" aria-labelledby="example-tab-hanging" tabindex="0"><pre><code class="language-haskell hljs">testUser =
     <span class="hljs-keyword">if</span> condition <span class="hljs-keyword">then</span> <span class="hljs-keyword">do</span>
         first
         branch
@@ -125,7 +123,7 @@
         <span class="hljs-keyword">else</span> <span class="hljs-keyword">do</span>
             third
             branch
-</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/shifted-ifs">test files</a>.</p>
+</code></pre></div></div><p>For more examples, see the <a href="https://github.com/fourmolu/fourmolu/tree/main/data/fourmolu/if-style">test files</a>.</p>
 
 </main>
 
@@ -136,7 +134,7 @@
         <footer class="border-top border-secondary-subtle mt-5 p-4">
             <p>
                 Documentation built from commit
-                <a href="https://github.com/fourmolu/fourmolu/tree/5b50ee2a1e8d8a18af5549e525b9d57d23f75c25"><code>5b50ee2a1e8d8a18af5549e525b9d57d23f75c25</code></a>
+                <a href="https://github.com/fourmolu/fourmolu/tree/5869bc2dda8b5d87a2b9df4f396934564f03c2f9"><code>5869bc2dda8b5d87a2b9df4f396934564f03c2f9</code></a>
             </p>
             <p>
                 Site proudly generated by
