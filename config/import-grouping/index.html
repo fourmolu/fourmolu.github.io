@@ -119,20 +119,23 @@
 rules:
   - glob: Data.Text
 </code></pre><p>Any import declaration matching at least one of those rules will belong to that group.</p>
-<p>The following rule types are defined:</p>
-<ul><li><p><code>match: all</code>: matches all modules</p>
+<p>By default, rules match all import declarations, either local or external, either qualified or unqualified, with explicit import list or hiding clauses, though with a high priority value.</p>
+<p>The following are possible rule attributes:</p>
+<ul><li><p><code>glob: &lt;pattern&gt;</code>: matches modules matching the provided <code>&lt;pattern&gt;</code>. <code>*</code> can be any character on the same module level. <code>**</code> can be any character and can span multiple module levels.</p>
 </li>
-<li><p><code>match: local-modules</code>: matches modules defined in the current Cabal project. Those modules are automatically detected. Developers can add custom modules through the <code>--local-modules</code> CLI option. See <a href="../../config/local-modules"><code>local-modules</code></a> for more information.</p>
+<li><p><code>import-list: any | explicit | hiding | none</code>: when set, <code>explicit</code> only matches import declarations with an explicit import list, <code>hiding</code> only matches import declarations with the <code>hiding</code> clause, <code>none</code> only matches import declarations on a whole module (no explicit import list or <code>hiding</code> clause), <code>any</code> matches all import declarations regardless of import lists or <code>hiding</code> clauses. When absent, <code>any</code> is assumed.</p>
 </li>
-<li><p><code>glob: &lt;pattern&gt;</code>: matches modules matching the provided <code>&lt;pattern&gt;</code>. <code>*</code> can be any character on the same module level. <code>**</code> can be any character and can span multiple module levels.</p>
+<li><p><code>qualified: yes | no</code>: when set, <code>yes</code> only matches import declarations that are qualified, unlike <code>no</code> which only matches import declarations that are not qualified.</p>
 </li>
-</ul>
-<p>In addition to the type, certain attributes can be added to rules:</p>
-<ul><li><p><code>import-list: any | explicit | hiding | none</code>: when set, <code>explicit</code> only matches import declarations with an explicit import list, <code>hiding</code> only matches import declarations with the <code>hiding</code> clause, <code>none</code> only matches import declarations on a whole module (no explicit import list or <code>hiding</code> clause), <code>any</code> matches all import declarations regardless of import lists or <code>hiding</code> clauses. When absent, <code>any</code> is assumed.</p>
-</li>
-<li><p><code>qualified: &lt;yes | no&gt;</code>: when set, <code>yes</code> only matches import declarations that are qualified, unlike <code>no</code> which only matches import declarations that are not qualified.</p>
+<li><p><code>scope: any | local | external</code>: when set, <code>any</code> matches all import declarations, <code>local</code> only matches modules defined in the current Cabal project and <code>external</code> only matches external modules. When absent, <code>any</code> is assumed. Local modules are automatically detected. Developers can add custom modules through the <code>--local-modules</code> CLI option. See <a href="../../config/local-modules"><code>local-modules</code></a> for more information.</p>
 </li>
 <li><p><code>priority: &lt;int&gt;</code>: in cases multiple rules from different groups match an import declaration, the value associated to <code>priority</code> is used as a tie-breaker: the matching rule with the lowest priority wins, and the import declaration will belong to the group with that rule.</p>
+</li>
+</ul>
+<p>The following attributes are deprecated but still usable:</p>
+<ul><li><p><code>match: all</code>: matches all modules with a high priority value.</p>
+</li>
+<li><p><code>match: local-modules</code>: matches local modules with a high priority value.</p>
 </li>
 </ul>
 <p>Here's an example used in the <code>custom</code> configuration:</p>
@@ -142,17 +145,16 @@ rules:
       - glob: Data.Text
   - name: &quot;The rest&quot;
     rules:
-      - match: all
-        priority: 100
+      - priority: 100
   - name: &quot;My internals and monads unqualified&quot;
     rules:
-      - match: local-modules
+      - scope: local
         qualified: no
       - glob: Control.Monad
         qualified: no
   - name: &quot;My internals and monads qualified&quot;
     rules:
-      - match: local-modules
+      - scope: local
         qualified: yes
       - glob: Control.Monad
         qualified: yes
@@ -245,7 +247,7 @@ rules:
         <footer class="border-top border-secondary-subtle mt-5 p-4">
             <p>
                 Documentation built from commit
-                <a href="https://github.com/fourmolu/fourmolu/tree/2b5493816b5afef50d14c545355baaffc49f62a6"><code>2b5493816b5afef50d14c545355baaffc49f62a6</code></a>
+                <a href="https://github.com/fourmolu/fourmolu/tree/cf628221c3502aa9268fd3038888cc8b5b87ca2c"><code>cf628221c3502aa9268fd3038888cc8b5b87ca2c</code></a>
             </p>
             <p>
                 Site proudly generated by
