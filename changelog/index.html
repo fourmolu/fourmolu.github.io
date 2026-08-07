@@ -63,7 +63,7 @@
 </li>
 </ul>
 <h4>Ormolu 0.8.1.0</h4>
-<ul><li><p>Fixed printing of guards on pattern binds. <a href="https://github.com/tweag/ormolu/issues/1178">Issue
+<ul><li><p>Fix printing of guards on pattern binds. <a href="https://github.com/tweag/ormolu/issues/1178">Issue
 1178</a>.</p>
 </li>
 <li><p>Switched to <code>ghc-lib-parser-9.14</code>, with the following new syntactic features:</p>
@@ -87,10 +87,10 @@
 <li><p>Correctly preserve consecutive blank lines in multiline strings. <a href="https://github.com/tweag/ormolu/issues/1194">Issue
 1194</a>.</p>
 </li>
-<li><p>Fixed printing of multi-line or-patterns inside as-patterns. <a href="https://github.com/tweag/ormolu/issues/1183">Issue
+<li><p>Fix printing of multi-line or-patterns inside as-patterns. <a href="https://github.com/tweag/ormolu/issues/1183">Issue
 1183</a>.</p>
 </li>
-<li><p>Fixed an issue where or-patterns would be indented twice. <a href="https://github.com/tweag/ormolu/issues/1188">Issue
+<li><p>Fix an issue where or-patterns would be indented twice. <a href="https://github.com/tweag/ormolu/issues/1188">Issue
 1188</a>.</p>
 </li>
 <li><p>Add support for <code>ExplicitLevelImports</code>. <a href="https://github.com/tweag/ormolu/issues/1192">Issue
@@ -100,7 +100,7 @@
 <h2>Fourmolu 0.19.0.1</h2>
 <h3>Upstream changed:</h3>
 <h4>Ormolu 0.8.0.2</h4>
-<ul><li><p>Fixed a performance regression introduced in 0.8.0.0. <a href="https://github.com/tweag/ormolu/issues/1176">Issue
+<ul><li><p>Fix a performance regression introduced in 0.8.0.0. <a href="https://github.com/tweag/ormolu/issues/1176">Issue
 1176</a>.</p>
 </li>
 </ul>
@@ -553,7 +553,7 @@ syntactic features:</p>
 </ul>
 <h3>Upstream changes:</h3>
 <h4>Ormolu 0.5.0.1</h4>
-<ul><li><p>Fixed a bug in the diff printing functionality. <a href="https://github.com/tweag/ormolu/issues/886">Issue
+<ul><li><p>Fix a bug in the diff printing functionality. <a href="https://github.com/tweag/ormolu/issues/886">Issue
 886</a>.</p>
 </li>
 <li><p>Indent closing bracket for list comprehensions in <code>do</code> blocks.
@@ -872,7 +872,7 @@ negation via <code>-</code> are removed where possible. <a href="https://github.
 <li><p>Now <code>--mode check</code> fails on missing trailing blank lines. <a href="https://github.com/tweag/ormolu/issues/743">Issue
 743</a>.</p>
 </li>
-<li><p>Fixed indentation of arrow forms in do blocks. <a href="https://github.com/tweag/ormolu/issues/739">Issue
+<li><p>Fix indentation of arrow forms in do blocks. <a href="https://github.com/tweag/ormolu/issues/739">Issue
 739</a>.</p>
 </li>
 </ul>
@@ -885,7 +885,7 @@ Standardized the way errors are printed.</p>
 <ul><li><p>Added support for monad comprehensions. <a href="https://github.com/tweag/ormolu/issues/665">Issue
 665</a>.</p>
 </li>
-<li><p>Fixed a bug when a space was inserted in front of promoted types even when
+<li><p>Fix a bug when a space was inserted in front of promoted types even when
 it wasn't strictly necessary. <a href="https://github.com/tweag/ormolu/issues/668">Issue
 668</a>.</p>
 </li>
@@ -895,7 +895,7 @@ found. The rendering of the diffs is also improved. <a href="https://github.com/
 </li>
 </ul>
 <h4>Ormolu 0.1.3.1</h4>
-<ul><li><p>Fixed a problem with multiline record updates using the record dot
+<ul><li><p>Fix a problem with multiline record updates using the record dot
 preprocessor. <a href="https://github.com/tweag/ormolu/issues/658">Issue 658</a>.</p>
 </li>
 </ul>
@@ -937,7 +937,7 @@ idempotent. <a href="https://github.com/tweag/ormolu/issues/630">Issue 630</a>.<
 </li>
 </ul>
 <h4>Ormolu 0.1.2.0:</h4>
-<ul><li><p>Fixed the bug when comments in different styles got glued together after
+<ul><li><p>Fix the bug when comments in different styles got glued together after
 formatting. <a href="https://github.com/tweag/ormolu/issues/589">Issue 589</a>.</p>
 </li>
 <li><p>Added <code>-i</code> as a shortcut for <code>--mode inplace</code>. <a href="https://github.com/tweag/ormolu/issues/467">Issue
@@ -964,26 +964,26 @@ disabled part is still syntactically correct. <a href="https://github.com/tweag/
 <li><p>Improved sorting of operators in imports. <a href="https://github.com/tweag/ormolu/issues/602">Issue
 602</a>.</p>
 </li>
-<li><p>Fixed a bug related to trailing space in multiline comments in certain
+<li><p>Fix a bug related to trailing space in multiline comments in certain
 cases. <a href="https://github.com/tweag/ormolu/issues/602">Issue 603</a>.</p>
 </li>
 <li><p>Added support for formatting linked lists with <code>(:)</code> as line terminator.
 <a href="https://github.com/tweag/ormolu/issues/478">Issue 478</a>.</p>
 </li>
-<li><p>Fixed rendering of function arguments in multiline layout. <a href="https://github.com/tweag/ormolu/issues/609">Issue
+<li><p>Fix rendering of function arguments in multiline layout. <a href="https://github.com/tweag/ormolu/issues/609">Issue
 609</a>.</p>
 </li>
 <li><p>Blank lines between definitions in <code>let</code> and <code>while</code> bindings are now
 preserved. <a href="https://github.com/tweag/ormolu/issues/554">Issue 554</a>.</p>
 </li>
-<li><p>Fixed the bug when type applications stuck to the <code>$</code> of TH splices that
+<li><p>Fix the bug when type applications stuck to the <code>$</code> of TH splices that
 followed them. <a href="https://github.com/tweag/ormolu/issues/613">Issue 613</a>.</p>
 </li>
 <li><p>Improved region formatting so that indented fragments—such as definitions
 inside of <code>where</code> clauses—can be formatted. <a href="https://github.com/tweag/ormolu/issues/572">Issue
 572</a>.</p>
 </li>
-<li><p>Fixed the bug related to the de-association of pragma comments. <a href="https://github.com/tweag/ormolu/issues/619">Issue
+<li><p>Fix the bug related to the de-association of pragma comments. <a href="https://github.com/tweag/ormolu/issues/619">Issue
 619</a>.</p>
 </li>
 </ul>
@@ -995,24 +995,24 @@ inside of <code>where</code> clauses—can be formatted. <a href="https://github
 </ul>
 <h3>Upstream changes:</h3>
 <h4>Ormolu 0.1.0.0:</h4>
-<ul><li><p>Fixed rendering of type signatures concerning several identifiers. <a href="https://github.com/tweag/ormolu/issues/566">Issue
+<ul><li><p>Fix rendering of type signatures concerning several identifiers. <a href="https://github.com/tweag/ormolu/issues/566">Issue
 566</a>.</p>
 </li>
-<li><p>Fixed an idempotence issue with inline comments in tuples and parentheses.
+<li><p>Fix an idempotence issue with inline comments in tuples and parentheses.
 <a href="https://github.com/tweag/ormolu/issues/450">Issue 450</a>.</p>
 </li>
-<li><p>Fixed an idempotence issue when certain comments were picked up as
+<li><p>Fix an idempotence issue when certain comments were picked up as
 “continuation” of a series of comments <a href="https://github.com/tweag/ormolu/issues/449">Issue
 449</a>.</p>
 </li>
-<li><p>Fixed an idempotence issue related to different indentation levels in a
+<li><p>Fix an idempotence issue related to different indentation levels in a
 comment series. <a href="https://github.com/tweag/ormolu/issues/512">Issue 512</a>.</p>
 </li>
-<li><p>Fixed an idempotence issue related to comments which may happen to be
+<li><p>Fix an idempotence issue related to comments which may happen to be
 separated from the elements they are attached to by the equality sign.
 <a href="https://github.com/tweag/ormolu/issues/340">Issue 340</a>.</p>
 </li>
-<li><p>Fixed an idempotence issue with type synonym and data declarations where
+<li><p>Fix an idempotence issue with type synonym and data declarations where
 the type has a Haddock. <a href="https://github.com/tweag/ormolu/issues/578">Issue
 578</a>.</p>
 </li>
@@ -1020,17 +1020,17 @@ the type has a Haddock. <a href="https://github.com/tweag/ormolu/issues/578">Iss
 multiple blank lines in a row. <a href="https://github.com/tweag/ormolu/issues/518">Issue
 518</a>.</p>
 </li>
-<li><p>Fixed rendering of comments around if expressions. <a href="https://github.com/tweag/ormolu/issues/458">Issue
+<li><p>Fix rendering of comments around if expressions. <a href="https://github.com/tweag/ormolu/issues/458">Issue
 458</a>.</p>
 </li>
 <li><p>Unnamed fields of data constructors are now documented using the <code>-- ^</code>
 syntax. <a href="https://github.com/tweag/ormolu/issues/445">Issue 445</a> and <a href="https://github.com/tweag/ormolu/issues/428">Issue
 428</a>.</p>
 </li>
-<li><p>Fixed non-idempotent transformation of partly documented data definition.
+<li><p>Fix non-idempotent transformation of partly documented data definition.
 <a href="https://github.com/tweag/ormolu/issues/590">Issue 590</a>.</p>
 </li>
-<li><p>Fixed an idempotence issue related to operators. <a href="https://github.com/tweag/ormolu/issues/522">Issue
+<li><p>Fix an idempotence issue related to operators. <a href="https://github.com/tweag/ormolu/issues/522">Issue
 522</a>.</p>
 </li>
 <li><p>Renamed the <code>--check-idempotency</code> flag to <code>--check-idempotence</code>.
@@ -1061,7 +1061,7 @@ Apparently only the latter is correct.</p>
 select a region to format. <a href="https://github.com/tweag/ormolu/issues/516">Issue
 516</a>.</p>
 </li>
-<li><p>Fixed rendering of module headers in the presence of preceding comments or
+<li><p>Fix rendering of module headers in the presence of preceding comments or
 Haddocks. <a href="https://github.com/tweag/ormolu/issues/561">Issue 561</a>.</p>
 </li>
 </ul>
@@ -1082,7 +1082,7 @@ declarations. When headers of these declarations are multi-line <code>where</cod
 now put on its own line. <a href="https://github.com/tweag/ormolu/issues/509">Issue
 509</a>.</p>
 </li>
-<li><p>Fixed the bug pertaining to rendering of arrow notation with multiline
+<li><p>Fix the bug pertaining to rendering of arrow notation with multiline
 expressions. <a href="https://github.com/tweag/ormolu/issues/513">Issue 513</a>.</p>
 </li>
 <li><p>Made rendering of data type definitions, value-level applications, and
@@ -1100,15 +1100,15 @@ and <code>StandaloneKindSignatures</code>.</p>
 </li>
 </ul>
 <h2>Ormolu 0.0.3.1</h2>
-<ul><li><p>Fixed rendering of record updates with the record dot preprocessor syntax
+<ul><li><p>Fix rendering of record updates with the record dot preprocessor syntax
 <a href="https://github.com/tweag/ormolu/issues/498">Issue 498</a>.</p>
 </li>
 </ul>
 <h2>Ormolu 0.0.3.0</h2>
-<ul><li><p>Fixed an issue related to unnecessary use of curly braces. <a href="https://github.com/tweag/ormolu/issues/473">Issue
+<ul><li><p>Fix an issue related to unnecessary use of curly braces. <a href="https://github.com/tweag/ormolu/issues/473">Issue
 473</a>.</p>
 </li>
-<li><p>Fixed the issue with formatting multi-way if when it happens to be a
+<li><p>Fix the issue with formatting multi-way if when it happens to be a
 function applied to arguments <a href="https://github.com/tweag/ormolu/issues/488">Issue
 488</a>. This changed the way
 multi-line if is formatted in general.</p>
@@ -1120,7 +1120,7 @@ multi-line if is formatted in general.</p>
 potentially-hanging consturctions in the presence of comments. <a href="https://github.com/tweag/ormolu/issues/447">Issue
 447</a>.</p>
 </li>
-<li><p>Fixed indentation in presence of type applications. <a href="https://github.com/tweag/ormolu/issues/493">Issue
+<li><p>Fix indentation in presence of type applications. <a href="https://github.com/tweag/ormolu/issues/493">Issue
 493</a>.</p>
 </li>
 <li><p>Class and instance declarations now do not have a blank line after
@@ -1138,20 +1138,20 @@ to that Ormolu is now GHCJS-compatible.</p>
 <li><p>Now unrecognized GHC options passed with <code>--ghc-opt</code> cause Ormolu to fail
 (exit code 7).</p>
 </li>
-<li><p>Fixed formatting of result type in closed type families. See <a href="https://github.com/tweag/ormolu/issues/420">issue
+<li><p>Fix formatting of result type in closed type families. See <a href="https://github.com/tweag/ormolu/issues/420">issue
 420</a>.</p>
 </li>
-<li><p>Fixed a minor inconsistency between formatting of normal and foreign type
+<li><p>Fix a minor inconsistency between formatting of normal and foreign type
 signatures. See <a href="https://github.com/tweag/ormolu/issues/408">issue 408</a>.</p>
 </li>
-<li><p>Fixed a bug when comment before module header with Haddock was moved
+<li><p>Fix a bug when comment before module header with Haddock was moved
 inside the export list. See <a href="https://github.com/tweag/ormolu/issues/430">issue
 430</a>.</p>
 </li>
 <li><p>Empty <code>forall</code>s are now correctly preserved. See <a href="https://github.com/tweag/ormolu/issues/429">issue
 429</a>.</p>
 </li>
-<li><p>Fixed <a href="https://github.com/tweag/ormolu/issues/446">issue 446</a>, which
+<li><p>Fix <a href="https://github.com/tweag/ormolu/issues/446">issue 446</a>, which
 involved braces and operators.</p>
 </li>
 <li><p>When there are comments between preceding Haddock (pipe-style) and its
@@ -1171,7 +1171,7 @@ associated with the declarations. Issues
 <li><p>Sorting language pragmas cannot not change meaning of the input program
 anymore. <a href="https://github.com/tweag/ormolu/issues/404">Issue 404</a>.</p>
 </li>
-<li><p>Fixed formatting of applications where function is a complex expression.
+<li><p>Fix formatting of applications where function is a complex expression.
 <a href="https://github.com/tweag/ormolu/issues/444">Issue 444</a>.</p>
 </li>
 </ul>
@@ -1187,7 +1187,7 @@ anymore. <a href="https://github.com/tweag/ormolu/issues/404">Issue 404</a>.</p>
         <footer class="border-top border-secondary-subtle mt-5 p-4">
             <p>
                 Documentation built from commit
-                <a href="https://github.com/fourmolu/fourmolu/tree/60afb8ea99e987bca07d896a911660db18c521d2"><code>60afb8ea99e987bca07d896a911660db18c521d2</code></a>
+                <a href="https://github.com/fourmolu/fourmolu/tree/8f862576c4a945eb39d187c93d2ef126e49c6428"><code>8f862576c4a945eb39d187c93d2ef126e49c6428</code></a>
             </p>
             <p>
                 Site proudly generated by
